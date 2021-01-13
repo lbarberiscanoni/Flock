@@ -6,11 +6,14 @@ import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
 import Question from "../components/Question";
 import Picture from "../components/Picture";
 
+const dogNames = ["American_Eskimo_Dog", "Bloodhound", "Doberman_Pinscher", "Weimaraner"]
+
 const Home = () => {
   
   const [question, setQuestion] = useState({})
   const [questions, addQuestion] = useState([])
-  const [picNum, nextNum] = useState(1)
+  const [dogPair, newPair] = useState([0, 1])
+  const [stage, changeStage] = useState("")
 
   const combinedChange = () => {
   	addQuestion([...questions, question])
@@ -30,7 +33,11 @@ const Home = () => {
   }
 
   const changePics = () => {
-  	console.log(picNum)
+  	if (dogPair[1] < dogNames.length - 1) {
+  		newPair([dogPair[1], dogPair[1] + 1])
+  	} else {
+  		newPair([dogPair[1], 0])
+  	}
   }
 
   const updateVotes = (id, num) => {
@@ -50,6 +57,18 @@ const Home = () => {
   return (
   	<div className="container">
 	    <h1>Flock</h1>
+	    <div className="row">
+	     	<div className="col">
+				<Picture
+					dog={ dogNames[dogPair[0]] }
+				/>
+			</div>
+			 <div className="col">
+				<Picture 
+					dog={ dogNames[dogPair[1]] }
+				/>
+			</div>
+		</div>
 	    <div className="row">
 		    <form 
 		    	className="row"
@@ -120,9 +139,6 @@ const Home = () => {
 						</div>
 					})}
 				</ul>
-			</div>
-			<div className="col">
-				<Picture path={"hello"}/>
 			</div>
 		</div>
 	</div>
