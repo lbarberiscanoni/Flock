@@ -1,0 +1,9 @@
+I am sure I am going to regret some of this file structure lol 
+
+ok so I can use some sample images to detect lying and other emotional intelligence questions based on pictures 
+	I can probably get them by looking back as the Unanimous Paper on EQ (https://unanimous.ai/wp-content/uploads/2018/09/Amplifying-Social-Intelligence-IEEE-ai4i-2018.pdf)
+
+let's try to update the rank of the questions based on their votes 
+	this is the way you sort an array of objects by value (https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/)
+		I also checked that this works in the browser
+	now I just have to do it in state 
