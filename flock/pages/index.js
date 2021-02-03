@@ -40,34 +40,6 @@ const Home = () => {
   	setQuestion({"text": "", "votes": 0, "decision": null})
   }
 
-  const TestingFirebaseUpdates = () => {
-	const update = {
-		pictureA: "dogA_id",
-		pictureB: "dogB_id",
-		features: {
-			"id1": {
-				"text": "preset_feature_A",
-				"score": {
-					0: 0,
-					1: .2,
-					2: .3,
-				},
-				"weight": 12
-			},
-			"id2": {
-				"text": "generated_feature_A",
-				"score": {
-					0: 0,
-					1: .5,
-					2: .2
-				},
-				"weight": 11
-			}
-		}
-	}
-  	firebase.database().ref("/").child("test2").update(update)
-  }
-
   const handleChange = (e) => {
   	setQuestion({
   		"text": e.target.value,
@@ -141,9 +113,6 @@ const Home = () => {
 			</form>
 			<button className="btn btn-primary" hidden={ !questions.length} onClick={() => changePics() }>
 				Next
-			</button>
-			<button className="btn btn-primary" onClick={() => TestingFirebaseUpdates() }>
-				Test
 			</button>
 	    </div>
 	    <div className="row"></div>
