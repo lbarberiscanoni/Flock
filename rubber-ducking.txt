@@ -7,3 +7,35 @@ let's try to update the rank of the questions based on their votes
 	this is the way you sort an array of objects by value (https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/)
 		I also checked that this works in the browser
 	now I just have to do it in state 
+
+now that I've hooked up Firebase (get it, "hooked" up ahahha), let's figure out the optimal JSON structure
+	uhm, I guess I have not figured out how to update Firebase from the app lol 
+	how do I update the rank of the questions
+		I should probably just sort them by value
+	maybe I should calculate the score by adding the scores from all participants
+		Yea, that makes sense  
+
+	firebase {
+		combo {
+			pictureA: "dogA_id",
+			pictureB: "dogB_id",
+			features: {
+				"preset_feature_A": {
+					"score": {
+						0: 0
+						1: .2
+						2: .3
+					}
+					"weight": 12
+				},
+				"generated_feature_A": {
+					"score": {
+						0: 0
+						1: .5
+						2: .2
+					}
+					"weight": 11
+				},
+			}
+		}
+	}

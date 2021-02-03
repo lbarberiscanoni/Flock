@@ -1,12 +1,30 @@
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
+import firebase from 'firebase';
+import { useList } from 'react-firebase-hooks/database';
 
 
 import Question from "../components/Question";
 import Picture from "../components/Picture";
 
 const dogNames = ["American_Eskimo_Dog", "Bloodhound", "Doberman_Pinscher", "Weimaraner"]
+
+//have to wait for loading for some reason
+if (!firebase.apps.length) {
+	firebase.initializeApp(
+		{
+			apiKey: "AIzaSyCd-ShNtjMD5hi1c4FpqLhuc7gOyc9URRw",
+			authDomain: "flock-cafbb.firebaseapp.com",
+			projectId: "flock-cafbb",
+			storageBucket: "flock-cafbb.appspot.com",
+			messagingSenderId: "1036154784473",
+			appId: "1:1036154784473:web:5dcd0b48cee589b52bccc8",
+			measurementId: "G-T45G3X54Y1"
+		}
+	);
+}
+
 
 const Home = () => {
   
@@ -15,15 +33,18 @@ const Home = () => {
   const [dogPair, newPair] = useState([0, 1])
   const [stage, changeStage] = useState("")
 
+  const [snapshots, loading, error] = useList(firebase.database().ref('/'));
+
   const combinedChange = () => {
   	addQuestion([...questions, question])
-  	setQuestion({"text": "", "votes": 0})
+  	setQuestion({"text": "", "votes": 0, "decision": null})
   }
 
   const handleChange = (e) => {
   	setQuestion({
   		"text": e.target.value,
-  		"votes": Math.floor(Math.random() * 10)
+  		"votes": 0,
+  		"decision": null
   	})
   }
 
@@ -38,6 +59,7 @@ const Home = () => {
   	} else {
   		newPair([dogPair[1], 0])
   	}
+  	addQuestion([])
   }
 
   const updateVotes = (id, num) => {
@@ -57,6 +79,11 @@ const Home = () => {
   return (
   	<div className="container">
 	    <h1>Flock</h1>
+	    <p>
+	    	{ snapshots.map((x) => {
+	    		return x.key
+	    	})}
+	    </p>
 	    <div className="row">
 	     	<div className="col">
 				<Picture
@@ -88,7 +115,7 @@ const Home = () => {
 					</button>
 				</div>
 			</form>
-			<button className="btn btn-primary" onClick={() => changePics() }>
+			<button className="btn btn-primary" hidden={ !questions.length} onClick={() => changePics() }>
 				Next
 			</button>
 	    </div>
@@ -124,12 +151,7 @@ const Home = () => {
 											
 										</h3>
 										<p>
-											<button className="btn btn-outline-primary">
-												Yes
-											</button>
-											<button className="btn btn-outline-secondary">
-												No
-											</button>
+											<input type="range" className="form-range" min="0" max="1" step="0.05" />
 										</p>
 									</div>
 									<div className="col"></div>
