@@ -36,15 +36,43 @@ const Home = () => {
   const [snapshots, loading, error] = useList(firebase.database().ref('/'));
 
   const combinedChange = () => {
-  	addQuestion([...questions, question])
+  	firebase.database().ref("/").child("test2").child("features").push(question)
   	setQuestion({"text": "", "votes": 0, "decision": null})
+  }
+
+  const TestingFirebaseUpdates = () => {
+	const update = {
+		pictureA: "dogA_id",
+		pictureB: "dogB_id",
+		features: {
+			"id1": {
+				"text": "preset_feature_A",
+				"score": {
+					0: 0,
+					1: .2,
+					2: .3,
+				},
+				"weight": 12
+			},
+			"id2": {
+				"text": "generated_feature_A",
+				"score": {
+					0: 0,
+					1: .5,
+					2: .2
+				},
+				"weight": 11
+			}
+		}
+	}
+  	firebase.database().ref("/").child("test2").update(update)
   }
 
   const handleChange = (e) => {
   	setQuestion({
   		"text": e.target.value,
-  		"votes": 0,
-  		"decision": null
+  		"score": {0:0},
+  		"weight": 1
   	})
   }
 
@@ -63,27 +91,23 @@ const Home = () => {
   }
 
   const updateVotes = (id, num) => {
-  	let updatedQuestions = []
-  	questions.map((q) => {
-  		if (q.text == id) {
-  			q.votes = num
-  		} 
-  		updatedQuestions.push(q)
+  	firebase.database().ref("/").child("test2").child("features").child(id).once("value").then((snapshot) => {
+  		let current_val = snapshot.val()["weight"]
+  		let new_val = current_val + num
+  		firebase.database().ref("/").child("test2").child("features").child(id).update({"weight": new_val})
   	})
-  	addQuestion(updatedQuestions)
   }
 
   useEffect(() => {
+  	console.log("snapshots", snapshots)
+  	if (snapshots.length > 0) {
+  		console.log(snapshots[0].val())
+  	}
   })
 
   return (
   	<div className="container">
 	    <h1>Flock</h1>
-	    <p>
-	    	{ snapshots.map((x) => {
-	    		return x.key
-	    	})}
-	    </p>
 	    <div className="row">
 	     	<div className="col">
 				<Picture
@@ -118,6 +142,9 @@ const Home = () => {
 			<button className="btn btn-primary" hidden={ !questions.length} onClick={() => changePics() }>
 				Next
 			</button>
+			<button className="btn btn-primary" onClick={() => TestingFirebaseUpdates() }>
+				Test
+			</button>
 	    </div>
 	    <div className="row"></div>
 	    <div className="row"></div>
@@ -125,30 +152,30 @@ const Home = () => {
 		<div className="row">
 			<div className="col">
 				<ul className="list-group">
-					{ questions.sort((a, b) => {
-						//sorting by value
-  						return b.votes - a.votes
-  					}).map((x) => {
-						return <div>
-							<li className="list-group-item"> 	
+					{snapshots.length > 0 &&
+						//sorting by weight (upvotes/downvotes)
+						Object.values(snapshots[0].val()["features"]).sort((a, b) => {
+  							return b.weight - a.weight
+  						}).map((feature) => {
+  							let feature_key = Object.keys(snapshots[0].val()["features"]).filter(key => snapshots[0].val()["features"][key]["text"] == feature["text"])[0]
+							return <li className="list-group-item"> 	
 								<div className="row">
 									<div className="col">
 										<div className="row">
-											<button onClick={() => updateVotes(x.text, x.votes + 1)}>
+											<button onClick={() => { updateVotes(feature_key, 1) }}>
 												<ArrowUpCircle width="35" height="35"/>
 											</button>
 										</div>
 										<div className="row">
-											<button onClick={() => updateVotes(x.text, x.votes -1)}>
+											<button onClick={() => { updateVotes(feature_key, -1) }}>
 												<ArrowDownCircle width="35" height="35"/>
 											</button>
 										</div>
 									</div>
 									<div className="col">
 										<h3>
-											<span className="badge bg-secondary"> { x.votes } </span>
-											{ x.text }
-											
+											<span className="badge bg-secondary"> { feature["weight"] } </span>
+											{ feature["text"] }
 										</h3>
 										<p>
 											<input type="range" className="form-range" min="0" max="1" step="0.05" />
@@ -158,9 +185,9 @@ const Home = () => {
 									<div className="col"></div>
 								</div>
 							</li>
-						</div>
-					})}
-				</ul>
+						})
+					}
+				</ul>	
 			</div>
 		</div>
 	</div>
