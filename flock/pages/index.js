@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
+
 import firebase from 'firebase';
 import { useList } from 'react-firebase-hooks/database';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
 
 import Question from "../components/Question";
 import Picture from "../components/Picture";
@@ -70,6 +71,12 @@ const Home = () => {
   	})
   }
 
+  const updateScores = (feature_id, user_id, score) => {
+  	let updates = {}
+  	updates["score/" + user_id] = score
+  	firebase.database().ref("/").child("test2").child("features").child(feature_id).update(updates)
+  }
+
   useEffect(() => {
   	console.log("snapshots", snapshots)
   	if (snapshots.length > 0) {
@@ -122,6 +129,8 @@ const Home = () => {
 			<div className="col">
 				<ul className="list-group">
 					{snapshots.length > 0 &&
+						//^^waiting for loading
+
 						//sorting by weight (upvotes/downvotes)
 						Object.values(snapshots[0].val()["features"]).sort((a, b) => {
   							return b.weight - a.weight
@@ -147,7 +156,7 @@ const Home = () => {
 											{ feature["text"] }
 										</h3>
 										<p>
-											<input type="range" className="form-range" min="0" max="1" step="0.05" />
+											<input type="range" className="form-range" min="0" max="1" step="0.05" onChange={(e) => { updateScores(feature_key, 1, e.target.value) }} />
 										</p>
 									</div>
 									<div className="col"></div>

@@ -12,6 +12,7 @@ now that I've hooked up Firebase (get it, "hooked" up ahahha), let's figure out 
 	uhm, I guess I have not figured out how to update Firebase from the app lol 
 	how do I update the rank of the questions
 		I should probably just sort them by value
+		wait, it's already there in the code! 
 	maybe I should calculate the score by adding the scores from all participants
 		Yea, that makes sense  
 
@@ -39,3 +40,28 @@ now that I've hooked up Firebase (get it, "hooked" up ahahha), let's figure out 
 			}
 		}
 	}
+
+let's see, how do I best leverage the onChange on the range input
+	I should probably do this when I move everything to the new view
+	Yea, bc new view --> table with the input 
+	I should probably implement this rn and then just move the logic to the new view when I get to it
+	hook + push the object on submit vs. update Firebase continously 
+		The issue with updating Firebase right away is that I'd have to somehow track who voted for what 
+			I guess I could use the push.key trick and save that into state and just update that key all the time
+			{ "user_id": vote } vs { "key": {"user_id": vote } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
