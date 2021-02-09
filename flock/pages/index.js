@@ -9,7 +9,6 @@ import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
 import Question from "../components/Question";
 import Picture from "../components/Picture";
 
-const dogNames = ["American_Eskimo_Dog", "Bloodhound", "Doberman_Pinscher", "Weimaraner"]
 
 //have to wait for loading for some reason
 if (!firebase.apps.length) {
@@ -30,16 +29,9 @@ if (!firebase.apps.length) {
 const Home = () => {
   
   const [question, setQuestion] = useState({})
-  const [questions, addQuestion] = useState([])
-  const [dogPair, newPair] = useState([0, 1])
-  const [stage, changeStage] = useState("")
+  const [dogPair, newPair] = useState(0)
 
   const [snapshots, loading, error] = useList(firebase.database().ref('/'));
-
-  const combinedChange = () => {
-  	firebase.database().ref("/").child("test2").child("features").push(question)
-  	setQuestion({"text": "", "votes": 0, "decision": null})
-  }
 
   const handleChange = (e) => {
   	setQuestion({
@@ -51,37 +43,34 @@ const Home = () => {
 
   const handleSubmit = (e) => {
   	e.preventDefault()
-  	combinedChange()
+  	firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").push(question)
+  	setQuestion({"text": "", "votes": 0, "score": {0:0}})
   }
 
   const changePics = () => {
-  	if (dogPair[1] < dogNames.length - 1) {
-  		newPair([dogPair[1], dogPair[1] + 1])
-  	} else {
-  		newPair([dogPair[1], 0])
-  	}
-  	addQuestion([])
+  	newPair(dogPair + 1)
+  	setQuestion({"text": "", "votes": 0, "score": {0:0}})
   }
 
   const updateVotes = (id, num) => {
-  	firebase.database().ref("/").child("test2").child("features").child(id).once("value").then((snapshot) => {
+  	firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(id).once("value").then((snapshot) => {
   		let current_val = snapshot.val()["weight"]
   		let new_val = current_val + num
-  		firebase.database().ref("/").child("test2").child("features").child(id).update({"weight": new_val})
+  		firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(id).update({"weight": new_val})
   	})
   }
 
   const updateScores = (feature_id, user_id, score) => {
   	let updates = {}
   	updates["score/" + user_id] = score
-  	firebase.database().ref("/").child("test2").child("features").child(feature_id).update(updates)
+  	firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(feature_id).update(updates)
   }
 
   useEffect(() => {
-  	console.log("snapshots", snapshots)
-  	if (snapshots.length > 0) {
-  		console.log(snapshots[0].val())
-  	}
+  	// console.log("useEffect", snapshots)
+  	// if (snapshots.length > 0) {
+  	// 	console.log(snapshots[0].val())
+  	// }
   })
 
   return (
@@ -90,12 +79,12 @@ const Home = () => {
 	    <div className="row">
 	     	<div className="col">
 				<Picture
-					dog={ dogNames[dogPair[0]] }
+					dog={ snapshots.length > 0 ? snapshots[dogPair].val()["pictureA"] : "" }
 				/>
 			</div>
 			 <div className="col">
 				<Picture 
-					dog={ dogNames[dogPair[1]] }
+					dog={ snapshots.length > 0 ? snapshots[dogPair].val()["pictureB"] : "" }
 				/>
 			</div>
 		</div>
@@ -118,7 +107,7 @@ const Home = () => {
 					</button>
 				</div>
 			</form>
-			<button className="btn btn-primary" hidden={ !questions.length} onClick={() => changePics() }>
+			<button className="btn btn-primary" onClick={() => changePics() }>
 				Next
 			</button>
 	    </div>
@@ -132,10 +121,10 @@ const Home = () => {
 						//^^waiting for loading
 
 						//sorting by weight (upvotes/downvotes)
-						Object.values(snapshots[0].val()["features"]).sort((a, b) => {
+						Object.values(snapshots[dogPair].val()["features"]).sort((a, b) => {
   							return b.weight - a.weight
   						}).map((feature) => {
-  							let feature_key = Object.keys(snapshots[0].val()["features"]).filter(key => snapshots[0].val()["features"][key]["text"] == feature["text"])[0]
+  							let feature_key = Object.keys(snapshots[dogPair].val()["features"]).filter(key => snapshots[dogPair].val()["features"][key]["text"] == feature["text"])[0]
 							return <li className="list-group-item"> 	
 								<div className="row">
 									<div className="col">
