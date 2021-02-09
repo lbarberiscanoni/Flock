@@ -33,6 +33,8 @@ const Home = () => {
 
   const [snapshots, loading, error] = useList(firebase.database().ref('/'));
 
+  const [user_id, changeUser] = useState(Math.random().toString().split(".")[1])
+
   const handleChange = (e) => {
   	setQuestion({
   		"text": e.target.value,
@@ -124,6 +126,7 @@ const Home = () => {
 						Object.values(snapshots[dogPair].val()["features"]).sort((a, b) => {
   							return b.weight - a.weight
   						}).map((feature) => {
+  							console.log(user_id)
   							let feature_key = Object.keys(snapshots[dogPair].val()["features"]).filter(key => snapshots[dogPair].val()["features"][key]["text"] == feature["text"])[0]
 							return <li className="list-group-item"> 	
 								<div className="row">
@@ -144,9 +147,10 @@ const Home = () => {
 											<span className="badge bg-secondary"> { feature["weight"] } </span>
 											{ feature["text"] }
 										</h3>
-										<p>
-											<input type="range" className="form-range" min="0" max="1" step="0.05" onChange={(e) => { updateScores(feature_key, 1, e.target.value) }} />
-										</p>
+										<div className="form-group">
+											<label>{ feature["score"][user_id.toString()] }</label>
+											<input type="range" className="form-range" min="0" max="1" step="0.05" onChange={(e) => { updateScores(feature_key, user_id, e.target.value) }} />
+										</div>
 									</div>
 									<div className="col"></div>
 									<div className="col"></div>

@@ -51,8 +51,9 @@ let's see, how do I best leverage the onChange on the range input
 			{ "user_id": vote } vs { "key": {"user_id": vote } }
 
 
-
-
+let's create the round robin system 
+	the pic pair is going to be in the JSON already 
+		I'm going to generate the base JSON with a python script
 
 
 

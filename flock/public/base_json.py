@@ -15,7 +15,7 @@ for pair in pairs:
 	ob["pictureB"] = pair[1]
 	ob["features"] = {}
 
-	default_features = ["eyes similar?", "fure similar?", "ears similar?"]
+	default_features = ["eyes similar?", "fur similar?", "ears similar?"]
 	j = 0
 	for feature in default_features:
 		ob["features"]["feature_" + str(j)] = {	"text": feature, "score": {0:0}, "weight": 1}
