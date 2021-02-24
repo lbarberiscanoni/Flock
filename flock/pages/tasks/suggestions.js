@@ -44,10 +44,6 @@ const Suggestions = () => {
 
 	}
 
-	useEffect(() => {
-		// console.log(snapshots[snapshots.length - 1].val())
-	})
-
 	return (
 		<div className="container">
 			<h1>Suggestions</h1>
