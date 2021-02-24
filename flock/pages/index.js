@@ -8,6 +8,8 @@ import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
 
 import Question from "../components/Question";
 import Picture from "../components/Picture";
+import Link from 'next/link'
+
 
 
 //have to wait for loading for some reason
@@ -115,7 +117,11 @@ const Home = () => {
 	    </div>
 	    <div className="row"></div>
 	    <div className="row"></div>
-	    <div className="row"></div>
+	    <div className="row">
+			<Link href="/tasks/suggestions">
+				<a>Suggestions</a>
+			</Link>
+	    </div>
 		<div className="row">
 			<div className="col">
 				<ul className="list-group">

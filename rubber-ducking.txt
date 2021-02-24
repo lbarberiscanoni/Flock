@@ -54,11 +54,98 @@ let's see, how do I best leverage the onChange on the range input
 let's create the round robin system 
 	the pic pair is going to be in the JSON already 
 		I'm going to generate the base JSON with a python script
+	
+Ok the key now is to do a limited view change
+	Thinking of holding a title in the middle and then rendering the other components invisible
+	I wonder how the original Flock paper did this
+		"Flock asks crowd members to guesswhich of two examples is from a positive class and which isfrom the negative class, then write a reason why. These rea-sons become features: Flock automatically clusters the rea-sons, then recruits crowds to normalize each cluster and pro-duce features. These features are then used by the crowd toannotate each example."
+		"Flock trains multiple models with different fea-ture subsets. It does so to show the user the performance of multiple prediction methods on the test set. These models in-clude Crowd prediction(a baseline asking workers directlyto guess the correct label for the example), ML with off-the-shelf(the chosen machine learning model using only out-of-the-box features such as n-grams), ML with crowd(the cho-sen machine learning model using only crowd features), or Hybrid(the full Flock model using both machine and crowdfeatures)."
+		"Previous research on analogical encoding has found thatwhen considering single examples, people tend to focus onsurface-level details, but when they compare examples, theyfocus on deeper structural characteristics"
+		"Flock launches 100c omparison tasks with three workers each per dataset, result-ing in 300 nominated features for about six cents per label ($20 total)."
+	Ah ok, so they have one task to generate features, and one task to vote on them
+		They are two separate tasks
+		"The features have considerable overlap, and manual cat-egorization suggested that the 300 nominations typically clus-tered into roughly 50 features."
+		"First, the system splits each responseinto multiple suggestions (e.g. by sentence, newlines, andconjunctions such as “and”). The system then performsk-means clustering (k= 50) using tf-idf weighted bigram text4 features. With these clusters in hand, Flock launches anothertask to CrowdFlower showing workers one cluster at a timeand asking them to summarize each into a single represen-tative question (or feature) that has a yes or no answer (e.g.,“Is this person shifting their eyes a lot?”). Three candidatefeatures are generated for each cluster."
 
+MapReduced version
+	Feature Generation 
+		Should we do 2 different dogs and 1 that is similar to at least one of them? 
+		Similarity + Difference
+			Ask about similarities 
+			Ask about differences 
+		Cluster
+			Basic n-gram stuff 
+		Extract top 3 summary features 
+	Feature Evaluation
+		Rank is individual 
+		Scoring is continous 
 
+ok so let's figure out the sequence to pull of the rewrite
+	I need to probably make separate pages, so that each link links to a different task 
+	the features generated don't need to be linked by users 
+		they can be just a part of JSON, a separte child
+	then from that child I build a page where it shows the n-gram and the user submist the summary 
+		the summary features need to be binary 
+		then voting happens, which is how the top 3 gets selected
+			which means I have to save this per user, or at least find a way to maintain the voting
+				I can just not show current votes to the user and have them vote without registering who they are
+		the summaries are saved on a new child 
+	after clustering, I move on to the feature evalution 
+		both rank and scoring need to be attached to an individual user 
 
+ok so let's structure this DB
+	firebase {
+		combo {
+			pictureA: "dogA_id",
+			pictureB: "dogB_id",
+			suggestions: {
+				idA: "suggestion from user A",
+				idB: "suggestion from user B"
+			},
+			clusters: {
+				clusterA: {
+					suggestions: [ngramA, ngramB],
+					summaries: {
+						summary_id_1 {
+							id_a: "summarizing cluster A",
+							vote: 0
+						},
+						summary_id_2 {
+							id_a: "summarizing cluster A",
+							vote: 0
+						}
+					}
 
-
+				}
+			},
+			features: {
+				"summary_id_1": {
+					"score": {
+						0: 0
+						1: .2
+						2: .3
+					}
+					"weight": {
+						0: 0
+						1: .2
+						2: .3
+					}
+				},
+				"summary_id_2": {
+					"score": {
+						0: 0
+						1: .5
+						2: .2
+					}
+					"weight": {
+						0: 0
+						1: .2
+						2: .3
+					}
+				},
+			}
+		}
+	}
 
 
 
