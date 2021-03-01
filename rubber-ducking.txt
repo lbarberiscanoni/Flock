@@ -162,6 +162,28 @@ ok so I'm at the suggestions page
 		how do I do this without having to set up a hook or a global property
 		boom!
 
+now I let's do the eval page
+	mostly it's the same as the v1, just removing the option
+	ok so I probalby don't need to change that much logic, bc I can set up the features to be evaluted based on teh results from the summary task 
+		I'll automate this some day 
+	ok so assume you already have the right features for each pair of dog pictures, what do you need to change? 
+		both rank and scoring need to be attached to each user
+	do I want to structure the data to be feature centric by having user-identified updates to the children of the feature? 
+		Or do I want to make it user centric? 
+		well, at a basic level it'd make it a lot easier to have this be pair centric to build the graph afterwards 
+	uhm, so when the user submits, they are submitting a score and a rank 
+		obviously score comes first, replicating the staging process that we have in the summary task 
+		so all I need to do is restructure "weight" to be like "score" and similarly attach the value to the user-id
+			the order somewhat doesn't matter as long as I have the id
+	gosh, wouldn't be great if this was a carosel type thing
+		#scope-creep
+	ok so now even the next function operates properly
+
+TO-DO sidenote
+	make the n-gram clustering automatic 
+	select top 3 features from summaries automatically
+	build the graph automatically (?)
+
 
 
 
