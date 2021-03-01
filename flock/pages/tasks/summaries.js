@@ -36,14 +36,31 @@ const Summaries = () => {
 	const handleChange = (e) => {
 		setSummary({
 			"text": e.target.value,
+			"votes": 0
 		})
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		firebase.database().ref("/").child("summaries").push(summary)
-		setSummary({"text": ""})
+		setSummary({"text": "", "votes": 0})
 
+	}
+
+	const updateVotes = (id, num, direction) => {
+		firebase.database().ref("/").child("summaries").child(id).once("value").then((snapshot) => {
+			let current_val = snapshot.val()["votes"]
+			let new_val = current_val + num
+			firebase.database().ref("/").child("summaries").child(id).update({"votes": new_val})
+		})
+
+		if (direction == "up") {
+			document.getElementById(id + "_up").hidden = true
+			document.getElementById(id + "_down").hidden = false
+		} else if (direction == "down") {
+			document.getElementById(id + "_up").hidden = false
+			document.getElementById(id + "_down").hidden = true
+		}
 	}
 
 	if(stage < 1) {
@@ -65,7 +82,9 @@ const Summaries = () => {
 							<div className="col-8">
 								<ul className="list-group">
 									{summaries.length > 0 &&
-										Object.values(summaries).map((other_summary) => {
+										Object.values(summaries).sort((a, b) => {
+											return b.val().votes - a.val().votes
+										}).map((other_summary) => {
 											return <li className="list-group-item">{ other_summary.val().text }</li>
 										})
 									}
@@ -110,28 +129,36 @@ const Summaries = () => {
 					<div className="col-8">
 						<ul className="list-group">
 							{summaries.length > 0 &&
-								Object.values(summaries).map((other_summary) => {
+								Object.values(summaries).sort((a, b) => {
+									return b.val().votes - a.val().votes
+								}).map((other_summary) => {
 									return <li className="list-group-item">
-										<div className="col">
-											<div className="row">
-												<button onClick={() => { updateVotes(feature_key, 1) }}>
-													<ArrowUpCircle width="35" height="35"/>
-												</button>
+										<div className="row">
+											<div className="col-sm-1">
+												<p className="text-center">{ other_summary.val().votes }</p>
 											</div>
-											<div className="row">
-												<button onClick={() => { updateVotes(feature_key, -1) }}>
-													<ArrowDownCircle width="35" height="35"/>
-												</button>
+											<div className="col-sm-2">
+												<div className="row">
+													<button id={ other_summary.key + "_up" } onClick={() => { updateVotes(other_summary.key, 1, "up"); }}>
+														<ArrowUpCircle width="35" height="35"/>
+													</button>
+													<button id={ other_summary.key + "_down" } onClick={() => { updateVotes(other_summary.key, -1, "down") }}>
+														<ArrowDownCircle width="35" height="35"/>
+													</button>
+												</div>
 											</div>
-										</div>
-										<div className="col">
-											{ other_summary.val().text }
+											<div className="col-sm-8">
+												{ other_summary.val().text }
+											</div>
 										</div>
 									</li>
 								})
 							}
 						</ul>
 					</div>
+				</div>
+				<div className="row">
+					<button className="btn btn-primary">Submit</button>
 				</div>
 			</div>
 		)
