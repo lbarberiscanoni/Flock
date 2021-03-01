@@ -179,10 +179,15 @@ now I let's do the eval page
 		#scope-creep
 	ok so now even the next function operates properly
 
+What do I have left
+	change the summary page to focus on clusters
+	closing statement for every task
+
 TO-DO sidenote
 	make the n-gram clustering automatic 
 	select top 3 features from summaries automatically
 	build the graph automatically (?)
+	might be good to have a survey at the end
 
 
 

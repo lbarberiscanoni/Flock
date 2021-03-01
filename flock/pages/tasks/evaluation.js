@@ -28,7 +28,7 @@ if (!firebase.apps.length) {
 }
 
 
-const Home = () => {
+const Evaluation = () => {
   
 	const [question, setQuestion] = useState({})
 	const [dogPair, newPair] = useState(0)
@@ -125,7 +125,7 @@ const Home = () => {
 											</h3>
 											<div className="form-group">
 												<label>No</label>
-												<input type="range" className="form-range" min="0" max="1" step="0.05" onChange={(e) => { updateScores(feature_key, user_id, e.target.value) }} />
+												<input type="range" className="form-range" min="0" max="1" value="0.5" step="0.05" onChange={(e) => { updateScores(feature_key, user_id, e.target.value) }} />
 												<label>Yes</label>
 											</div>
 										</div>
@@ -207,4 +207,4 @@ const Home = () => {
 	}
 }
 
-export default Home;
+export default Evaluation;
