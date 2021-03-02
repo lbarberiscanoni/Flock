@@ -60,30 +60,39 @@ const Suggestions = () => {
 				</div>
 			</div>
 			<div className="row">
-			    <form 
-			    	onSubmit={handleSubmit}
-				>
-					<div className="col">
-						<textarea 
-							placeholder="Suggestion" 
-							value={suggestion.text}
-							onChange={handleChange}
-							className="form-control"
-						/>
-					</div>
-					<div className="col">
-						<button className="btn btn-primary">
-							Submit
-						</button>
-
-					</div>
-				</form>
-				<button hidden={ suggestions.length < 2 } className="btn btn-primary">
-					Done
-				</button>
-		    </div>
+				<p>Please briefly describe the differences and similarities between these two dogs</p>
+				<p>Use single sentences that focus on features. For example "their noses are of different sizes", "their fur is of a different color"</p>
+			</div>
 			<div className="row">
 				<div className="col">
+				    <form 
+				    	onSubmit={handleSubmit}
+					>
+						<div className="col">
+							<textarea 
+								placeholder="Suggestion" 
+								value={suggestion.text}
+								onChange={handleChange}
+								className="form-control"
+								columns="30"
+								rows="3"
+							/>
+						</div>
+						<div className="col">
+							<button className="btn btn-primary">
+								Submit
+							</button>
+
+						</div>
+					</form>
+				</div>
+				<div className="col">
+					<h4>You have given { suggestions.length } answers out of a minimum of 5</h4>
+					<a href="/tasks/conclusion">
+						<button hidden={ suggestions.length < 5 } className="btn btn-primary">
+							Done
+						</button>
+					</a>
 					<ul className="list-group">
 						{ suggestions.length > 0 &&
 							suggestions.map((x) => {
@@ -92,7 +101,7 @@ const Suggestions = () => {
 						}
 					</ul>	
 				</div>
-			</div>
+		    </div>
 		</div>
 	)
 }

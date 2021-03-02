@@ -179,6 +179,10 @@ now I let's do the eval page
 		#scope-creep
 	ok so now even the next function operates properly
 
+ok so let's see, where am I now? 
+	I have to create a closing tastement for every task
+		That's not too bad, especially bc I need to start with task 1
+
 What do I have left
 	change the summary page to focus on clusters
 	closing statement for every task
@@ -188,6 +192,7 @@ TO-DO sidenote
 	select top 3 features from summaries automatically
 	build the graph automatically (?)
 	might be good to have a survey at the end
+	let's not forget about the crypto mining in the background
 
 
 
