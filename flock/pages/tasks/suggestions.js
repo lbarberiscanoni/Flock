@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Picture from "../../components/Picture";
 
-
 //have to wait for loading for some reason
 if (!firebase.apps.length) {
 	firebase.initializeApp(
@@ -30,9 +29,12 @@ const Suggestions = () => {
 
 	const [snapshots, loading, error] = useList(firebase.database().ref('/'));
 
+	const [user_id, changeUser] = useState(Math.random().toString().split(".")[1])
+
 	const handleChange = (e) => {
 		setSuggestion({
 			"text": e.target.value,
+			"user": user_id
 		})
 	}
 
@@ -40,7 +42,7 @@ const Suggestions = () => {
 		e.preventDefault()
 		firebase.database().ref("/").child("suggestions").push(suggestion)
 		addSuggestions(state => [suggestion, ...state])
-		setSuggestion({"text": ""})
+		setSuggestion({"text": "", "user": user_id})
 
 	}
 
