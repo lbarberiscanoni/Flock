@@ -28,8 +28,8 @@ if (!firebase.apps.length) {
 const Summaries = () => {
 	const [summary, setSummary] = useState({})
 	const [stage, switchStage] = useState(0)
+	const [clusterNum, switchCluster] = useState(0)
 
-	const [suggestions, loading, error] = useList(firebase.database().ref('/suggestions'));
 	const [summaries, load, err] = useList(firebase.database().ref('/summaries'));
 
 
@@ -42,16 +42,17 @@ const Summaries = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		firebase.database().ref("/").child("summaries").push(summary)
+		firebase.database().ref("/summaries").child("cluster" + clusterNum.toString()).child("summaries").push(summary)
 		setSummary({"text": "", "votes": 0})
 
 	}
 
 	const updateVotes = (id, num, direction) => {
-		firebase.database().ref("/").child("summaries").child(id).once("value").then((snapshot) => {
+		console.log(id)
+		firebase.database().ref("/summaries").child("cluster" + clusterNum.toString()).child("summaries").child(id).once("value").then((snapshot) => {
 			let current_val = snapshot.val()["votes"]
 			let new_val = current_val + num
-			firebase.database().ref("/").child("summaries").child(id).update({"votes": new_val})
+			firebase.database().ref("/summaries").child("cluster" + clusterNum.toString()).child("summaries").child(id).update({"votes": new_val})
 		})
 
 		if (direction == "up") {
@@ -63,16 +64,25 @@ const Summaries = () => {
 		}
 	}
 
+	const next = () => {
+		if(stage < 1) {
+			switchStage(1)
+		} else {
+			switchCluster(clusterNum + 1)
+			switchStage(0)
+		}
+	}
+
 	if(stage < 1) {
 		return(
 			<div className="container">
 				<h1>Summaries</h1>
 				<div className="row">
 			     	<div className="col">
-						<h2>Suggestion Cluster</h2>
-						{suggestions.length > 0 &&
-							Object.values(suggestions).map((suggestion) => {
-								return <h3>{ suggestion.val().text }</h3>
+						<h2>Suggestion Cluster { clusterNum }</h2>
+						{summaries.length > 0 && 
+							Object.values(summaries)[clusterNum].val().suggestions.map((x) => {
+								return <h3> { x } </h3>
 							})
 	  					}
 					</div>
@@ -82,10 +92,10 @@ const Summaries = () => {
 							<div className="col-8">
 								<ul className="list-group">
 									{summaries.length > 0 &&
-										Object.values(summaries).sort((a, b) => {
-											return b.val().votes - a.val().votes
+										Object.values(Object.values(summaries)[clusterNum].val().summaries).sort((a, b) => {
+											return b.votes - a.votes
 										}).map((other_summary) => {
-											return <li className="list-group-item">{ other_summary.val().text }</li>
+											return <li className="list-group-item">{ other_summary.text }</li>
 										})
 									}
 								</ul>
@@ -108,7 +118,7 @@ const Summaries = () => {
 										</button>
 										<button 
 											className="btn btn-primary"
-											onClick={() => switchStage(stage + 1)}
+											onClick={() => next()}
 										>
 											Next
 										</button>
@@ -129,26 +139,28 @@ const Summaries = () => {
 					<div className="col-8">
 						<ul className="list-group">
 							{summaries.length > 0 &&
-								Object.values(summaries).sort((a, b) => {
-									return b.val().votes - a.val().votes
-								}).map((other_summary) => {
+								Object.keys(Object.values(summaries)[clusterNum].val().summaries).sort((a, b) => {
+									let ob = Object.values(summaries)[clusterNum].val().summaries
+									return ob[b].votes - ob[a].votes
+								}).map((other_summary_key) => {
+									let other_summary = Object.values(summaries)[clusterNum].val().summaries[other_summary_key]
 									return <li className="list-group-item">
 										<div className="row">
 											<div className="col-sm-1">
-												<p className="text-center">{ other_summary.val().votes }</p>
+												<p className="text-center">{ other_summary.votes }</p>
 											</div>
 											<div className="col-sm-2">
 												<div className="row">
-													<button id={ other_summary.key + "_up" } onClick={() => { updateVotes(other_summary.key, 1, "up"); }}>
+													<button id={ other_summary_key + "_up" } onClick={() => { updateVotes(other_summary_key, 1, "up"); }}>
 														<ArrowUpCircle width="35" height="35"/>
 													</button>
-													<button id={ other_summary.key + "_down" } onClick={() => { updateVotes(other_summary.key, -1, "down") }}>
+													<button id={ other_summary_key + "_down" } onClick={() => { updateVotes(other_summary_key, -1, "down") }}>
 														<ArrowDownCircle width="35" height="35"/>
 													</button>
 												</div>
 											</div>
 											<div className="col-sm-8">
-												{ other_summary.val().text }
+												{ other_summary.text }
 											</div>
 										</div>
 									</li>
@@ -158,7 +170,12 @@ const Summaries = () => {
 					</div>
 				</div>
 				<div className="row">
-					<button className="btn btn-primary">Submit</button>
+					<button 
+						className="btn btn-primary"
+						onClick={() => next()}
+					>
+						Submit
+					</button>
 				</div>
 			</div>
 		)

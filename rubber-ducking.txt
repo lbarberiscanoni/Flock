@@ -183,6 +183,35 @@ ok so let's see, where am I now?
 	I have to create a closing tastement for every task
 		That's not too bad, especially bc I need to start with task 1
 
+ok we are back
+	so, I already implemented the two phases of Task 2, so at this point I just have to just restructure it so that it's based on clusters
+	I need to update the structure of the Firebase JSON, and then ensure the updates are flowing smoothly 
+		cluster1 {
+			suggestions {
+				0: "lorem ipsum"
+			}
+			summaries {
+				summary_A {
+					userID: userID
+					text: "lorem ipsum"
+					votes: 0
+				}
+				summary_B {
+					userID: userID
+					text: "lorem ipsum"
+					votes: 0
+				}
+			}
+		}
+	should voting the top 3 features happend after every cluster?
+		probably
+	let's start by checking if I can move across clusters easily
+		woot woot!
+	now let's see if I can uplaod the summaries correctly
+		uploading works, but now I have to do the voting correctly
+		ok so now I have to update the votes correctly
+	nice, so now let's go to the top items from the cluster
+
 What do I have left
 	change the summary page to focus on clusters
 	closing statement for every task
