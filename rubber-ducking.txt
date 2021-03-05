@@ -213,8 +213,6 @@ ok we are back
 	nice, so now let's go to the top items from the cluster
 
 What do I have left
-	change the summary page to focus on clusters
-	closing statement for every task
 
 TO-DO sidenote
 	make the n-gram clustering automatic 

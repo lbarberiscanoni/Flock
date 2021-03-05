@@ -170,12 +170,19 @@ const Summaries = () => {
 					</div>
 				</div>
 				<div className="row">
-					<button 
-						className="btn btn-primary"
-						onClick={() => next()}
-					>
-						Submit
-					</button>
+					{ clusterNum < Object.values(summaries).length - 1 
+						? <button 
+							className="btn btn-primary"
+							onClick={() => next()}
+						>
+							Submit
+						</button>
+						: <a href="/tasks/conclusion">
+							<button className="btn btn-primary">
+								Done
+							</button>
+						</a>
+					}
 				</div>
 			</div>
 		)
