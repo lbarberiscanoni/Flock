@@ -212,7 +212,22 @@ ok we are back
 		ok so now I have to update the votes correctly
 	nice, so now let's go to the top items from the cluster
 
-What do I have left
+Duplicate checker
+	it should be pretty easy
+	I need to loop through all the Firebase answers so far
+		let's start with this
+	I get all the answers and remove filler words like "the", "are", "dogs", and "both"
+	then I run the same function on the submitted answer and check in whether any key terms left are already in the list
+	this shouldn't be too hard, but I might have to read up on some NLP shit
+	ok so this works, but maybe reduce the answers into a single large array to check for duplicates is not the right appraoch
+		after all, you shouldn't be penalized for using the word "long" if it's referring to a different body part
+		so then I should make a regular loop that just terminates if too many words are included
+	wow, so update the hook doesn't work within this while loop for some reason lol
+		gotta implement some crappy solution
+	I want to show them the prior answers, which shouldn't be hard
+		I worry I'll upset them though if they try for like 30m and don't come up with anything new
+		I could show them different dogs after like 5 attempts
+			yea, and then reset after 5
 
 TO-DO sidenote
 	make the n-gram clustering automatic 
