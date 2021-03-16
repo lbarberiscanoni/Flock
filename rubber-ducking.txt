@@ -229,6 +229,17 @@ Duplicate checker
 		I could show them different dogs after like 5 attempts
 			yea, and then reset after 5
 
+clustering
+	first, I need to re-run task 1
+		let's download all the prior responses
+		then I'll narrow it to the last 50 bc they came from the 10 Master Turkers
+		and then I'll do a clean slate
+	why isn't it updating on vercel?
+		ok now it works
+		so strange lol
+	ok back to clustering
+		now I'm going to take the good suggestions and run the n-gram script
+
 TO-DO sidenote
 	make the n-gram clustering automatic 
 	select top 3 features from summaries automatically

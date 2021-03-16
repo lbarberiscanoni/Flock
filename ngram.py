@@ -2,19 +2,21 @@
 import nltk 
 import re 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer 
+from sklearn.cluster import DBSCAN
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
 import pandas as pd 
 import json
   
-# First, the system splits each response into multiple suggestions (e.g. by sentence, newlines, and conjunctions such as “and”). 
-#The system then performs kmeans clustering (k = 50) using tf-idf weighted bigram text features. 
+# First, the system splits each response into multiple suggestions (e.g. by sentence, newlines, and conjunctions such as "and"). 
+# The system then performs kmeans clustering (k = 50) using tf-idf weighted bigram text features. 
 
 # Input the file  
 txt1 = [] 
-with open("flock-cafbb-default-rtdb-export.json") as f: 
+with open("good_suggestions.json") as f: 
     raw_json = json.load(f)
-    suggestions = raw_json["suggestions"]
+    suggestions = raw_json
+    # suggestions = raw_json["suggestions"]
     for key in suggestions:
         txt1.append(suggestions[key]["text"])
       
@@ -40,3 +42,7 @@ for col, term in enumerate(features):
 ranking = pd.DataFrame(data1, columns = ['term', 'rank']) 
 words = (ranking.sort_values('rank', ascending = False)) 
 print ("\n\nWords : \n", words.head(7))
+
+#running the DBSCAN
+clustering = DBSCAN(eps=3, min_samples=5).fit(X1)
+print(clustering.labels_)

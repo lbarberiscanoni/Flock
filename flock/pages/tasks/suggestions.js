@@ -44,67 +44,76 @@ const Suggestions = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		firebase.database().ref("/").child("suggestions").get().then((snapshot) => {
-			let prior_answers_raw = Object.values(snapshot.val())
-			let kw_prior_answers = []
-			prior_answers_raw.map((answer) => {
-				let kw_prior_answer = keyword_extractor.extract(answer.text, {
+		if (suggestion.text.split(" ").join("").length < 20) {
+			alert("your response is too short so it triggered our anti-trolling system")
+			setSuggestion({
+				"text": "",
+				"user": user_id
+			})
+		} else {
+
+			firebase.database().ref("/").child("suggestions").get().then((snapshot) => {
+				let prior_answers_raw = Object.values(snapshot.val())
+				let kw_prior_answers = []
+				prior_answers_raw.map((answer) => {
+					let kw_prior_answer = keyword_extractor.extract(answer.text, {
+						language:"english",
+						remove_digits: true,
+						return_changed_case:true,
+						remove_duplicates: false
+					});
+
+					kw_prior_answers.push(kw_prior_answer)
+				})
+
+				let kw_suggestion = keyword_extractor.extract(suggestion.text, {
 					language:"english",
 					remove_digits: true,
 					return_changed_case:true,
 					remove_duplicates: false
 				});
 
-				kw_prior_answers.push(kw_prior_answer)
-			})
+				let n = 0
+				//having to do this bc somehow setSuggestion({"text": ""}) doesn't work within this loop
+				let duplicateCheck = false
+				while (n < kw_prior_answers.length - 1) {
+					let duplicateNum = 0
+					kw_suggestion.forEach((kw) => {
+						if (kw_prior_answers[n].includes(kw)) {
+							duplicateNum += 1
+						}
+					})
 
-			let kw_suggestion = keyword_extractor.extract(suggestion.text, {
-				language:"english",
-				remove_digits: true,
-				return_changed_case:true,
-				remove_duplicates: false
-			});
+					let duplicate_perc = (duplicateNum / kw_suggestion.length) * 100
 
-			let n = 0
-			//having to do this bc somehow setSuggestion({"text": ""}) doesn't work within this loop
-			let duplicateCheck = false
-			while (n < kw_prior_answers.length - 1) {
-				let duplicateNum = 0
-				kw_suggestion.forEach((kw) => {
-					if (kw_prior_answers[n].includes(kw)) {
-						duplicateNum += 1
+					if (duplicate_perc >= 50) {
+						alert("someone already submitted a similar answer \n\n try something else \n\n also check prior answers")
+						duplicateCheck = true
+						n = kw_prior_answers.length
+					} else {
+						n++
 					}
-				})
-
-				let duplicate_perc = (duplicateNum / kw_suggestion.length) * 100
-
-				if (duplicate_perc >= 50) {
-					alert("someone already submitted a similar answer \n\n try something else \n\n also check prior answers")
-					duplicateCheck = true
-					n = kw_prior_answers.length
-				} else {
-					n++
 				}
-			}
 
-			if (!duplicateCheck) {
-				addSuggestions(state => [suggestion, ...state])
-				firebase.database().ref("/").child("suggestions").push(suggestion)
-
-			} else {
-				if (attempts < 4) {
-					setAttempts(attempts + 1)
-				} else {
+				if (!duplicateCheck) {
 					addSuggestions(state => [suggestion, ...state])
-					setAttempts(0)
-				}
-			}
+					firebase.database().ref("/").child("suggestions").push(suggestion)
 
-			setSuggestion({
-				"text": "",
-				"user": user_id
+				} else {
+					if (attempts < 4) {
+						setAttempts(attempts + 1)
+					} else {
+						addSuggestions(state => [suggestion, ...state])
+						setAttempts(0)
+					}
+				}
+
+				setSuggestion({
+					"text": "",
+					"user": user_id
+				})
 			})
-		})
+		}
 	}
 
 	const getPriorAnswers = () => {
