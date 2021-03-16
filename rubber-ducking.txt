@@ -239,6 +239,14 @@ clustering
 		so strange lol
 	ok back to clustering
 		now I'm going to take the good suggestions and run the n-gram script
+	what a win for real time patching ahah
+	ok so back to clustering now
+		this mofo ain't working properly lol
+		I mean, the DB scan is working right, but some of these features include the verbs
+		I need to extrac key words maybe?
+			that's what the stopwords nltk error is about!!
+				great way of debugging through permissions!
+		ok this is starting to make more sense
 
 TO-DO sidenote
 	make the n-gram clustering automatic 

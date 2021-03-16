@@ -2,7 +2,7 @@
 import nltk 
 import re 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer 
-from sklearn.cluster import DBSCAN
+from sklearn.cluster import DBSCAN, KMeans
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize 
 import pandas as pd 
@@ -18,10 +18,21 @@ with open("good_suggestions.json") as f:
     suggestions = raw_json
     # suggestions = raw_json["suggestions"]
     for key in suggestions:
-        txt1.append(suggestions[key]["text"])
-      
+        for el in suggestions[key]["text"].split(","):
+        	txt1.append(el)
+
+stop_words = set(stopwords.words('english')) 
+spec_words = ["dog", "dogs", "animal"]
+i = 0
+for suggestion in txt1:
+	suggestion = re.sub('\s+', ' ', suggestion).strip().replace(" . ", "").replace(".", "").replace(" .", "")
+	txt1[i] = ' '.join([x for x in nltk.word_tokenize(suggestion) if ( x not in stop_words ) and ( x not in spec_words )]) 
+	i += 1
+
+print(txt1)
+
 # Getting bigrams  
-vectorizer = CountVectorizer(ngram_range =(2, 2)) 
+vectorizer = CountVectorizer(ngram_range =(3, 3)) 
 X1 = vectorizer.fit_transform(txt1)  
 features = (vectorizer.get_feature_names()) 
 print("\n\nFeatures : \n", features) 
@@ -29,7 +40,7 @@ print("\n\nX1 : \n", X1.toarray())
   
 # Applying TFIDF 
 # You can still get n-grams here 
-vectorizer = TfidfVectorizer(ngram_range = (2, 2)) 
+vectorizer = TfidfVectorizer(ngram_range = (3, 3)) 
 X2 = vectorizer.fit_transform(txt1) 
 scores = (X2.toarray()) 
 print("\n\nScores : \n", scores) 
@@ -41,8 +52,14 @@ for col, term in enumerate(features):
     data1.append( (term, sums[0, col] )) 
 ranking = pd.DataFrame(data1, columns = ['term', 'rank']) 
 words = (ranking.sort_values('rank', ascending = False)) 
-print ("\n\nWords : \n", words.head(7))
+print ("\n\nWords : \n", words.head(20))
 
 #running the DBSCAN
-clustering = DBSCAN(eps=3, min_samples=5).fit(X1)
+clustering = DBSCAN(eps=2, min_samples=2).fit(X1)
+print("DBSCAN")
 print(clustering.labels_)
+
+#compare it to kmeans
+kmeans = KMeans(n_clusters=3, random_state=0).fit(X1)
+print("KMeans 3")
+print(kmeans.labels_)
