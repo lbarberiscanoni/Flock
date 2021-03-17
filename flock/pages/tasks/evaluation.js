@@ -45,6 +45,7 @@ const Evaluation = () => {
 		Math.floor(Math.random() * (5 - 1 + 1)) + 1,
 		Math.floor(Math.random() * (10 - 5 + 1)) + 5
 	])
+
 	// const [attentionCheckParams, updateAttentionCheck] = useState([1, 2])
 	const [attentionCheckStatus, updateAttentionCheckStatus] = useState(false)
 
@@ -80,7 +81,7 @@ const Evaluation = () => {
 		}
 
 		//check if you are in attentionChecking mode
-		if (featureNum == attentionCheckParams[1]) {
+		if (!attentionCheckStatus && featureNum == attentionCheckParams[1]) {
 			let updates = {}
 			updates[user_id + "/score/"] = score
 			firebase.database().ref("/").child("pair_" + dogPair.toString()).child("attention_checks").update(updates)
