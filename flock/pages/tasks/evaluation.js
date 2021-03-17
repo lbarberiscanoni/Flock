@@ -286,9 +286,21 @@ const Evaluation = () => {
 						</div>
 					</div>
 				    <div className="row">
-						<button className="btn btn-primary" onClick={() => nextPair() }>
+						<button 
+							className="btn btn-primary" 
+							hidden={ dogPair > snapshots.length - 1  } 
+							onClick={() => nextPair() }
+						>
 							Next Pair
 						</button>
+						<a href="/tasks/conclusion">
+							<button 
+								className="btn btn-primary"
+								hidden={ dogPair <= snapshots.length - 1 } 
+							>
+								Done
+							</button>
+						</a>
 				    </div>
 				    <div className="row">
 				    	<h4>Rank these features in terms of importance in distinguishing the difference by upvoting and downvoting them</h4>
