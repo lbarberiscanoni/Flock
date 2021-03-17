@@ -248,6 +248,65 @@ clustering
 				great way of debugging through permissions!
 		ok this is starting to make more sense
 
+ok let's do this: Task 3
+	first, let's figure out the features from the clusters
+		let's first run an experiment with the new suggestions
+			same fur color
+			same size
+			patches? 
+			droopy face
+			length of neck
+			thin mid-section
+			relaxed ears
+			floppy ears
+			looseness of fur
+			stomach curvature
+			length tails
+			length of jaw
+			ferociousness 
+			curl of tail
+			skin around nose
+			teeth
+		yes, let's try these
+			let's generate them with a script
+	also, rn it's 5 dogs but it ends up being 20 comparisons
+		should I do more?
+			Nah, not yet
+	ok so we got the features, but now let's add some anti-trolling
+		I could make them answer each question separately
+			that way the next button only shows up at the end
+		ok, fixed the default value so it still moves
+		I could do question by question, with some duplicates as the attention check
+			Yea, and the whole thing has to start over if they fail at answering in the same exact way
+			This is easier said than done ahah
+			also, the Next button should only show up at the end
+			maybe I should use UseEffect to initialize the list of features and then have a hook that just loops through them
+			oh yea, wait it's that easy bc I can just figure out the keys each time
+				nice. Not super-clean but not dirty either
+			now I have to create the right event for the NextFeature button to show up
+				I really don't want to have to create a separate hook for this
+				boom!
+			nice, so now everything is place to implement the attention check
+				ok let's do this
+				how should I structure this? 
+					I could initialize and select some random int within the number of features where I inject a repeated question
+						then I check double check the values
+							I feel like this is not the hard part
+					yea, I could select some random int
+						actually, select a random feature and then a random time to ask it again
+						and then through conditinal checking I inject it again!!
+							let's try it
+						so close: you've got this
+				ok so now you are accessing firebase effectively
+			this should be a simple comparison
+				oh shit, what if I get the same issue about internal state updates like I did last time...
+					wait jk it just worked!
+				now the issue is enabling the person to keep going
+					should I make a new hook where the status is passed?
+				nice! now it works
+					let's just add attention checks to the script
+
+
 TO-DO sidenote
 	make the n-gram clustering automatic 
 	select top 3 features from summaries automatically

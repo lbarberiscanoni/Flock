@@ -13,15 +13,16 @@ import json
 
 # Input the file  
 txt1 = [] 
-with open("good_suggestions.json") as f: 
+with open("really_good_suggestions.json") as f: 
     raw_json = json.load(f)
     suggestions = raw_json
     # suggestions = raw_json["suggestions"]
     for key in suggestions:
         for el in suggestions[key]["text"].split(","):
-        	txt1.append(el)
+        	txt1.append(el.strip().lower())
 
 stop_words = set(stopwords.words('english')) 
+#, "their", "they", "Their", "one", "also"
 spec_words = ["dog", "dogs", "animal"]
 i = 0
 for suggestion in txt1:
@@ -52,10 +53,13 @@ for col, term in enumerate(features):
     data1.append( (term, sums[0, col] )) 
 ranking = pd.DataFrame(data1, columns = ['term', 'rank']) 
 words = (ranking.sort_values('rank', ascending = False)) 
-print ("\n\nWords : \n", words.head(20))
+#let's remove limits to the print
+pd.set_option('display.max_rows', None)
+pd.options.display.max_rows
+print ("\n\nWords : \n", words.head(45))
 
 #running the DBSCAN
-clustering = DBSCAN(eps=2, min_samples=2).fit(X1)
+clustering = DBSCAN(eps=1, min_samples=2).fit(X1)
 print("DBSCAN")
 print(clustering.labels_)
 
