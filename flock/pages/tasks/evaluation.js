@@ -286,11 +286,13 @@ const Evaluation = () => {
 						</div>
 					</div>
 				    <div className="row">
-						<button className="btn btn-primary" onClick={() => next() }>
-							Next
+						<button className="btn btn-primary" onClick={() => nextPair() }>
+							Next Pair
 						</button>
 				    </div>
-				    <div className="row"></div>
+				    <div className="row">
+				    	<h4>Rank these features in terms of importance in distinguishing the difference by upvoting and downvoting them</h4>
+				    </div>
 				    <div className="row"></div>
 					<div className="row">
 						<div className="col">
