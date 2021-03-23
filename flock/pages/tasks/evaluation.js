@@ -5,6 +5,7 @@ import { useList } from 'react-firebase-hooks/database';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import { ArrowUpCircle, ArrowDownCircle } from 'react-bootstrap-icons';
+import { ProgressBar } from 'react-bootstrap';
 
 import Question from "../../components/Question";
 import Picture from "../../components/Picture";
@@ -53,13 +54,14 @@ const Evaluation = () => {
 		setQuestion({
 			"text": e.target.value,
 			"score": {0:0},
-			"weight": 1
+			"weight": {0:0}
 		})
 	}
 
 	const changePics = () => {
 		newPair(dogPair + 1)
-		setQuestion({"text": "", "votes": 0, "score": {0:0}})
+		changeFeature(0)
+		setQuestion({"text": "", "weight": {0:0}, "score": {0:0}})
 	}
 
 	const updateRank = (id, num) => {
@@ -131,6 +133,7 @@ const Evaluation = () => {
 	}
 
 	if(snapshots.length > 0) {
+		let features = Object.values(snapshots[dogPair].val()["features"])
 		if(stage < 1) {
 			if (!attentionCheckStatus && featureNum == attentionCheckParams[1]) {
 				return (
@@ -214,6 +217,19 @@ const Evaluation = () => {
 					    <div className="row">
 					    	<h4>As part of our anti-trolling efforts, we added a randomized attention check so be sure to remember your answers or you will have to start over</h4>
 					    </div>
+					    <h5>{"Dog Pair " + (dogPair + 1).toString() + " / " + Object.values(snapshots).length.toString()}</h5>
+					    <ProgressBar 
+					    	animated 
+					    	variant="success" 
+					    	now={(dogPair + 1) / (Object.values(snapshots).length) * 100 } 
+					    	label={Math.round((dogPair + 1) / (Object.values(snapshots).length) * 100) + "%"}
+					    />
+					    <h5>{"Feature " + featureNum.toString() + " / " + features.length.toString()}</h5>
+					    <ProgressBar 
+					    	animated 
+					    	now={(featureNum / features.length) * 100} 
+					    	label={(featureNum / features.length) * 100 + "%"} 
+					    />
 					    <div className="row"></div>
 						<div className="row">
 							<div className="col">
@@ -223,12 +239,12 @@ const Evaluation = () => {
 											<div className="col-sm-2">
 												<p>Confidence Level</p>
 												<h3>
-													{ Object.values(snapshots[dogPair].val()["features"])[featureNum]["score"][user_id.toString()] }
+													{ features[featureNum]["score"][user_id.toString()] }
 												</h3>
 											</div>
 											<div className="col-sm-8">
 												<h3>
-													{ Object.values(snapshots[dogPair].val()["features"])[featureNum]["text"] }
+													{ features[featureNum]["text"] }
 												</h3>
 												<div className="form-group">
 													<label>Not at all</label>
@@ -247,14 +263,14 @@ const Evaluation = () => {
 											<div className="col">
 												<button 
 													className="btn btn-primary" 
-													hidden={ Object.keys(Object.values(snapshots[dogPair].val()["features"])[featureNum]["score"]).indexOf(user_id.toString()) < 0 || featureNum >= Object.values(snapshots[dogPair].val()["features"]).length - 1}
+													hidden={ Object.keys(features[featureNum]["score"]).indexOf(user_id.toString()) < 0 || featureNum >= Object.values(snapshots[dogPair].val()["features"]).length - 1}
 													onClick={() => nextFeature() }
 												>
 													Next Feature
 												</button>
 												<button 
 													className="btn btn-primary" 
-													hidden={featureNum < Object.values(snapshots[dogPair].val()["features"]).length - 1}
+													hidden={featureNum < features.length - 1}
 													onClick={() => nextPair() }
 												>
 													Next Stage
@@ -311,7 +327,7 @@ const Evaluation = () => {
 							<ul className="list-group">
 								{
 									//sorting by weight (upvotes/downvotes)
-									Object.values(snapshots[dogPair].val()["features"]).sort((a, b) => {
+									features.sort((a, b) => {
 			  							return b.weight[user_id] - a.weight[user_id]
 			  						}).map((feature) => {
 			  							let feature_key = Object.keys(snapshots[dogPair].val()["features"]).filter(key => snapshots[dogPair].val()["features"][key]["text"] == feature["text"])[0]

@@ -306,11 +306,20 @@ ok let's do this: Task 3
 				nice! now it works
 					let's just add attention checks to the script
 
+ok, so first let's fix this bug
+	for some reason, past pair0 it's only showing them the rank features as opposed to scoring
+		was this for all of them?
+			yes
+	I wonder if it's bc I'm not switching stages properly
+		let's check the logic when the dogPair switches
+		weird...it just worked
+			might just have to re-run it lol
+
+ok so let's implement the progress bar
+	go React Boostrap, so much easier lol
 
 TO-DO sidenote
-	make the n-gram clustering automatic 
-	select top 3 features from summaries automatically
-	build the graph automatically (?)
+	build the graph automatically
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background
 

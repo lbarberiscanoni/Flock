@@ -18,6 +18,7 @@
     "next": "10.0.4",
     "postcss": "^8.2.4",
     "react": "17.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-bootstrap-icons": "^1.2.3",
     "react-dom": "17.0.1",
     "react-firebase-hooks": "^2.2.0",
