@@ -29,6 +29,7 @@ const Suggestions = () => {
 	const [suggestion, setSuggestion] = useState({})
 	const [suggestions, addSuggestions] = useState([])
 	const [attempts, setAttempts] = useState(0)
+	const [pairNum, changePairNum] = useState(0)
 
 	const [snapshots, loading, error] = useList(firebase.database().ref('/'));
 
@@ -98,13 +99,14 @@ const Suggestions = () => {
 				if (!duplicateCheck) {
 					addSuggestions(state => [suggestion, ...state])
 					firebase.database().ref("/").child("suggestions").push(suggestion)
-
+					changePairNum(Math.floor(Math.random() * (snapshots.length - 1)))
 				} else {
 					if (attempts < 4) {
 						setAttempts(attempts + 1)
 					} else {
 						addSuggestions(state => [suggestion, ...state])
 						setAttempts(0)
+						changePairNum(Math.floor(Math.random() * (snapshots.length - 1)))
 					}
 				}
 
@@ -131,18 +133,19 @@ const Suggestions = () => {
 			<div className="row">
 		     	<div className="col">
 					<Picture
-						dog={ snapshots.length > 0 ? snapshots[0].val()["pictureA"] : "" }
+						dog={ snapshots.length > 0 ? snapshots[pairNum].val()["pictureA"] : "" }
 					/>
 				</div>
 				 <div className="col">
 					<Picture 
-						dog={ snapshots.length > 0 ? snapshots[0].val()["pictureB"] : "" }
+						dog={ snapshots.length > 0 ? snapshots[pairNum].val()["pictureB"] : "" }
 					/>
 				</div>
 			</div>
 			<div className="row">
-				<p>Please briefly describe the differences and similarities between these two dogs</p>
-				<p>Use single sentences that focus on features. For example "their noses are of different sizes", "their fur is of a different color"</p>
+				<p>Please briefly describe the differences between these two dogs</p>
+				<p>Use single sentences that focus on features without getting too specific</p>
+				<p>For example "their ears are of different colors" is GOOD, but "the first dog's ears are brown and the other's are black" is BAD</p>
 			</div>
 			<div className="row">
 				<div className="col">

@@ -318,6 +318,10 @@ ok, so first let's fix this bug
 ok so let's implement the progress bar
 	go React Boostrap, so much easier lol
 
+time to do the graph
+	let's get this d3 thing going on
+	let's actually take the time to learn this
+
 TO-DO sidenote
 	build the graph automatically
 	might be good to have a survey at the end
