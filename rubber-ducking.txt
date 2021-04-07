@@ -343,6 +343,12 @@ ok so first let's re-run Task 1
 	wait, I don't like shifting dogs every pic
 		let's make it 3 suggestions per dog pair
 
+let's do this graph
+	let's implement the d3 version first
+	good page (https://gist.github.com/alexcjohnson/a4b714eee8afd2123ee00cb5b3278a5f)
+	good examples (https://medium.com/@Elijah_Meeks/interactive-applications-with-react-d3-f76f7b3ebc71)
+	done!!!
+
 TO-DO sidenote
 	build the graph automatically
 	might be good to have a survey at the end

@@ -1,1 +1,1560 @@
-{"pair_0": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Bull_Terrier", "pictureB": "Miniature_Bull_Terrier", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_1": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Chihuahua", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_2": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Belgian_Tervuren", "pictureB": "Belgian_Sheepdog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_3": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Jack_Russell_Terrier", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_4": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Xoloitzcuintle", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_5": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Saluki", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_6": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Havanese", "pictureB": "Maltese", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_7": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Bichon_Frise", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_8": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Cane_Corso", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_9": {"attention_checks": {"0": {"score": 0}}, "pictureA": "German_Shorthaired_Pointer", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_10": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Pomeranian", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_11": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Saluki", "pictureB": "Anatolian_Shepherd", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_12": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Sloughi", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_13": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Saluki", "pictureB": "Sloughi", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_14": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Foxhound", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_15": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Chihuahua", "pictureB": "Jack_Russell_Terrier", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_16": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Kuvasz", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_17": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Norwegian_Elkhound", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_18": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Papillon", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_19": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Maltese", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_20": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Yorkshire_Terrier", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_21": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Australian_Shepherd", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_22": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Peruvian_Hairless_dog", "pictureB": "American_Eskimo_Dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_23": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Belgian_Malenois", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_24": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Australian_Cattle_Dog", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_25": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Saluki", "pictureB": "Tibetan_Mastiff", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_26": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Lhasa_Apso", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_27": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Saluki", "pictureB": "Chihuahua", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_28": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Brittany", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_29": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Havanese", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_30": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Anatolian_Shepherd", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_31": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Chihuahua", "pictureB": "Xoloitzcuintle", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_32": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Gordon_Setter", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_33": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Chihuahua", "pictureB": "Bichon_Frise", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_34": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Cairn_Terrier", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_35": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Volpino_Italiano", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_36": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Labrador_Retriever", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_37": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Border_Collie", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_38": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Cane_Corso", "pictureB": "Jack_Russell_Terrier", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_39": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Giant_Schnauzer", "pictureB": "Peruvian_Hairless_dog", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}, "pair_40": {"attention_checks": {"0": {"score": 0}}, "pictureA": "Chihuahua", "pictureB": "Pomeranian", "features": {"feature_0": {"text": "eyes similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_1": {"text": "fur similar?", "score": {"0": 0}, "weight": {"0": 0}}, "feature_2": {"text": "ears similar?", "score": {"0": 0}, "weight": {"0": 0}}}}}
+{
+  "pair_0": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Bull_Terrier",
+    "pictureB": "Miniature_Bull_Terrier",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_1": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Chihuahua",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_2": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Belgian_Tervuren",
+    "pictureB": "Belgian_Sheepdog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_3": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Jack_Russell_Terrier",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_4": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Xoloitzcuintle",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_5": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Saluki",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_6": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Havanese",
+    "pictureB": "Maltese",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_7": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Bichon_Frise",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_8": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Cane_Corso",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_9": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "German_Shorthaired_Pointer",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_10": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Pomeranian",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_11": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Saluki",
+    "pictureB": "Anatolian_Shepherd",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_12": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Sloughi",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_13": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Saluki",
+    "pictureB": "Sloughi",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_14": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Foxhound",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_15": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Chihuahua",
+    "pictureB": "Jack_Russell_Terrier",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_16": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Kuvasz",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_17": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Norwegian_Elkhound",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_18": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Papillon",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_19": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Maltese",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_20": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Yorkshire_Terrier",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_21": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Australian_Shepherd",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_22": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Peruvian_Hairless_dog",
+    "pictureB": "American_Eskimo_Dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_23": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Belgian_Malenois",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_24": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Australian_Cattle_Dog",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_25": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Saluki",
+    "pictureB": "Tibetan_Mastiff",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_26": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Lhasa_Apso",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_27": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Saluki",
+    "pictureB": "Chihuahua",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_28": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Brittany",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_29": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Havanese",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_30": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Anatolian_Shepherd",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_31": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Chihuahua",
+    "pictureB": "Xoloitzcuintle",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_32": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Gordon_Setter",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_33": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Chihuahua",
+    "pictureB": "Bichon_Frise",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_34": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Cairn_Terrier",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_35": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Volpino_Italiano",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_36": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Labrador_Retriever",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_37": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Border_Collie",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_38": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Cane_Corso",
+    "pictureB": "Jack_Russell_Terrier",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_39": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Giant_Schnauzer",
+    "pictureB": "Peruvian_Hairless_dog",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  },
+  "pair_40": {
+    "attention_checks": {
+      "0": {
+        "score": 0
+      }
+    },
+    "pictureA": "Chihuahua",
+    "pictureB": "Pomeranian",
+    "features": {
+      "feature_0": {
+        "text": "eyes similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_1": {
+        "text": "fur similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      },
+      "feature_2": {
+        "text": "ears similar?",
+        "score": {
+          "0": 0
+        },
+        "weight": {
+          "0": 0
+        }
+      }
+    }
+  }
+}
