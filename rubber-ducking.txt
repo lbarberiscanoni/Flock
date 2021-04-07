@@ -349,6 +349,39 @@ let's do this graph
 	good examples (https://medium.com/@Elijah_Meeks/interactive-applications-with-react-d3-f76f7b3ebc71)
 	done!!!
 
+	now let's break down what the JSON looks like to load it
+		{
+			"nodes": [
+				{
+				"id": "Myriel",
+				"group": 1
+				},
+				{
+				"id": "Napoleon",
+				"group": 1
+				},
+			],
+			"links": [
+				{
+				"source": "Napoleon",
+				"target": "Myriel",
+				"value": 1
+				},
+				{
+				"source": "Mlle.Baptistine",
+				"target": "Myriel",
+				"value": 8
+				}
+			]
+		}
+
+	let's figure this out for just one pair
+
+	wait, actually I should probably start with links and then construct the nodes from the links
+		#BigBrain
+		wait a minute, I'm not actually comparing individual dogs against each other
+			I'm comparing two dogs: that's the data I have
+
 TO-DO sidenote
 	build the graph automatically
 	might be good to have a survey at the end
