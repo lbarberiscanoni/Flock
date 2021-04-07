@@ -333,6 +333,13 @@ let's figure out this PCA ranking
 	then ima rank the pairs by Eucledian distances and select the top 50
 	 	top 50 means 2450 (50 * 49) pair-wise comparisions lol
 	 		this is a lot of comparisions, might have to trim it to just 5
+	 	actually, it's just 50 pairs, not 50 dogs so we are good lol
+
+ok so first let's re-run Task 1
+	how should I do this? 
+	I have the top 50 pairs, so I just have to break that down into the actual dogs
+	I can likely update the base_json script and generate the right sequence that way
+	actually, this is probably easier bc I can just append this to the script
 
 TO-DO sidenote
 	build the graph automatically

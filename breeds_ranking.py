@@ -2,6 +2,9 @@ import numpy as np
 from numpy.linalg import norm
 from pprint import pprint
 from itertools import combinations 
+from os import listdir
+import json
+
 
 data = np.load("pca_sample_breed.npy", allow_pickle=True)
 
@@ -34,6 +37,34 @@ for combo in combos:
 	eucledian_distance = norm(first_el - second_el)
 	pairs[pair_name] = eucledian_distance
 
+base_json = {}
+images = listdir("flock/public/dogs")
 sorted_pairs = sorted(pairs, key=pairs.get)
+i = 0
 for sorted_pair in sorted_pairs[0:50]:
-	print(sorted_pair, pairs[sorted_pair])
+	ob = {}
+
+	firstDog = sorted_pair.split("_vs_")[0].replace("-", "_")
+	secondDog = sorted_pair.split("_vs_")[1].replace("-", "_")
+
+	ob["attention_checks"] = {0: {"score": 0}}
+	ob["pictureA"] = firstDog
+	ob["pictureB"] = secondDog
+	ob["features"] = {}
+
+	default_features = ["eyes similar?", "fur similar?", "ears similar?"]
+
+	j = 0
+	for feature in default_features:
+		ob["features"]["feature_" + str(j)] = {	"text": feature, "score": {0:0}, "weight": {0: 0}}
+		j += 1
+
+	if (firstDog + ".jpg" in images) and (secondDog + ".jpg" in images):
+
+		key = "pair_" + str(i)
+		base_json[key] = ob
+
+		i += 1
+
+with open("top50pca.json", "w+") as outfile:
+    json.dump(base_json, outfile)

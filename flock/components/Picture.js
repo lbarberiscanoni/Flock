@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const Picture = (props) => {
 	return (
 		<img 
-			src={"../" + props.dog + ".jpg"} 
+			src={"../dogs/" + props.dog + ".jpg"} 
 			className="rounded float-start w-80 h-80" 
 		/>
 	)

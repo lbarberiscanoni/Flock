@@ -143,9 +143,8 @@ const Suggestions = () => {
 				</div>
 			</div>
 			<div className="row">
-				<p>Please briefly describe the differences between these two dogs</p>
-				<p>Use single sentences that focus on features without getting too specific</p>
-				<p>For example "their ears are of different colors" is GOOD, but "the first dog's ears are brown and the other's are black" is BAD</p>
+				<p>Please briefly describe the differences between these two dogs using single sentences that focus on specific features</p>
+				<p>For example "their ears are of different colors: the first dog's ears are brown and the other's are black"</p>
 			</div>
 			<div className="row">
 				<div className="col">
