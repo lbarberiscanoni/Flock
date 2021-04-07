@@ -99,7 +99,11 @@ const Suggestions = () => {
 				if (!duplicateCheck) {
 					addSuggestions(state => [suggestion, ...state])
 					firebase.database().ref("/").child("suggestions").push(suggestion)
-					changePairNum(Math.floor(Math.random() * (snapshots.length - 1)))
+					if (suggestions.length > 2) {
+						if ((suggestions.length % 3) === 0) {
+							changePairNum(Math.floor(Math.random() * (snapshots.length - 1)))
+						}
+					}
 				} else {
 					if (attempts < 4) {
 						setAttempts(attempts + 1)
@@ -120,7 +124,7 @@ const Suggestions = () => {
 
 	const getPriorAnswers = () => {
 		let components = []
-		Object.values(snapshots[6].val()).map((snapshot) => {
+		Object.values(snapshots[snapshots.length - 1].val()).map((snapshot) => {
 			components.push(<p>{ snapshot.text }</p>)
 		})
 
@@ -171,9 +175,9 @@ const Suggestions = () => {
 				</div>
 				<div className="col">
 					<div className="row">
-						<h4>You have given { suggestions.length } answers out of a minimum of 5</h4>
+						<h4>You have given { suggestions.length } answers out of a minimum of 12</h4>
 						<a href="/tasks/conclusion">
-							<button hidden={ suggestions.length < 5 } className="btn btn-primary">
+							<button hidden={ suggestions.length < 12 } className="btn btn-primary">
 								Done
 							</button>
 						</a>
@@ -190,14 +194,14 @@ const Suggestions = () => {
 					<div className="row">
 						<div className="col-8">
 							{ snapshots.length > 0 &&
-								<h4> { snapshots[6] ? getPriorAnswers().length : 0 } Prior Answers </h4>
+								<h4> { snapshots[snapshots.length - 1] ? getPriorAnswers().length : 0 } Prior Answers </h4>
 							}
 				    	</div>
 				    	<div className="col-8">
 					    	<div className="overflow-scroll" style={{ "max-height": "200px"}}>
 					    		{ snapshots.length > 0 &&
 									<ul className="list-group">
-										{ snapshots[6] ? getPriorAnswers() : "" }
+										{ snapshots[snapshots.length - 1] ? getPriorAnswers() : "" }
 									</ul>
 								}
 					    	</div>
