@@ -13,7 +13,7 @@ import json
 
 # Input the file  
 txt1 = [] 
-with open("really_good_suggestions.json") as f: 
+with open("features_v3.json") as f: 
     raw_json = json.load(f)
     suggestions = raw_json
     # suggestions = raw_json["suggestions"]
@@ -23,7 +23,7 @@ with open("really_good_suggestions.json") as f:
 
 stop_words = set(stopwords.words('english')) 
 #, "their", "they", "Their", "one", "also"
-spec_words = ["dog", "dogs", "animal"]
+spec_words = ["dog", "dogs", "animal", "first", "second"]
 i = 0
 for suggestion in txt1:
 	suggestion = re.sub('\s+', ' ', suggestion).strip().replace(" . ", "").replace(".", "").replace(" .", "")

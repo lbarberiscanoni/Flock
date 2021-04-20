@@ -382,8 +382,38 @@ let's do this graph
 		wait a minute, I'm not actually comparing individual dogs against each other
 			I'm comparing two dogs: that's the data I have
 
+let's extract the new features
+	I should have the script already, so I just need to download the JSON from Firebase and re-run it #fingersCrossed
+	this worked!!!
+
+elo-based redesign
+	first, pull up the code for CrowdElo
+	focus!! the first pomodoro is to tame the monkey mind! 
+	what does the DB model need to look like? 
+		breed_name
+			picture: "lol.jpg"
+			features
+				feature_name
+					weight: numOfTimesTheComparisonTookPlace
+					score: 1500
+
+
+
+	most of the changes will be to the frontend
+		gotta figure out how to do an attention check 
+
+	maybe I should track which pairwise comparisions have been done
+		that's where the PCA values come in 
+
+	let's start with redesigning the model
+		nice
+
+	let's not worry about optimizing the pair-wise or feature-wise comparision quite yet
+
+	let's actually take a look at the graph
+
+
 TO-DO sidenote
-	build the graph automatically
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background
 
