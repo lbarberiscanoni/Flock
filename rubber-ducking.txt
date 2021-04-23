@@ -412,6 +412,17 @@ elo-based redesign
 
 	let's actually take a look at the graph
 
+let's get started
+	I should look at the graph as well as some point today, but let's focus on the attention check
+		jk, let's do the graph real quick, now that I have some data
+		
+	last time, I implemented the attention check by picking a random question and registering the response to ensure it matched when asked again
+		I can do a similar thing by picking a prior comparision the person and ask it again
+		they key is to register scores based on userID
+	I also should have some grounding results, like the darkness of the skin color
+
+	oh this reminds me, I need to add progress bars
+		yea, let's do this real quick
 
 TO-DO sidenote
 	might be good to have a survey at the end

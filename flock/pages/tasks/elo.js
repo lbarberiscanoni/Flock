@@ -56,7 +56,7 @@ const Elo = () => {
 	}
 
 	const newPair = () => {
-		let numOfItems = snapshots[0].val().length 
+		let numOfItems = snapshots[0].val().length - 1
 
 		let firstItem = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
 		let secondItem = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
@@ -77,8 +77,8 @@ const Elo = () => {
 		const updatedScore_winner = elo(currentScore_winner, currentScore_loser, 1)
 		const updatedScore_loser = elo(currentScore_loser, currentScore_winner, 0)
 
-		console.log("winner", updatedScore_winner)
-		console.log("loser", updatedScore_loser)
+		// console.log("winner", updatedScore_winner)
+		// console.log("loser", updatedScore_loser)
 
 		let update = {}
 		update["score"] = updatedScore_winner
@@ -100,6 +100,13 @@ const Elo = () => {
 			.update(update)
 
 		changePair(newPair())
+
+		let numOfFeatures = snapshots[1].val().length
+		if (featureNum < numOfFeatures - 1) {
+			changeFeature(featureNum + 1)
+		} else {
+			changeFeature(0)
+		}
 	}
 
 	if(snapshots.length > 1) {
@@ -108,6 +115,11 @@ const Elo = () => {
 		return(
 			<div className="container">
 				<h1>Flock</h1>
+			    <ProgressBar 
+			    	animated 
+			    	now={(featureNum / features.length) * 100} 
+			    	label={Math.round((featureNum / features.length) * 100) + "%"} 
+			    />
 				<div className="row">
 					<h2>{ features[featureNum].text }</h2>
 				</div>

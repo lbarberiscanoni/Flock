@@ -228,7 +228,7 @@ const Evaluation = () => {
 					    <ProgressBar 
 					    	animated 
 					    	now={(featureNum / features.length) * 100} 
-					    	label={(featureNum / features.length) * 100 + "%"} 
+					    	label={Math.round((featureNum / features.length) * 100) + "%"} 
 					    />
 					    <div className="row"></div>
 						<div className="row">
