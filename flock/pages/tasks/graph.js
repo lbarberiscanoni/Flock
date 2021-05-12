@@ -160,9 +160,18 @@ const Graph = () => {
 
 			let firstFeatures_arr = []
 			let secondFeatures_arr = []
-			for (let j = 0; j < firstFeatures.length; j++) {
-				firstFeatures_arr.push(firstFeatures[j]["score"])
-				secondFeatures_arr.push(secondFeatures[j]["score"])
+			for (let j = 0; j < firstFeatures.length - 1; j++) {
+				if (Object.values(featureMap).length > 0) {
+					if (featureMap[j].status) {
+						firstFeatures_arr.push(firstFeatures[j]["score"])
+						secondFeatures_arr.push(secondFeatures[j]["score"])	
+					} else {
+						console.log(featureMap[j].text, featureMap[j].status)
+					}
+				} else {
+					firstFeatures_arr.push(firstFeatures[j]["score"])
+					secondFeatures_arr.push(secondFeatures[j]["score"])					
+				}
 			}
 
 			let edge_weight = cosinesim(firstFeatures_arr, secondFeatures_arr)
@@ -189,7 +198,6 @@ const Graph = () => {
 			internal_ob["group"] = count[key]
 			output["nodes"].push(internal_ob)
 		})
-		// console.log(output)
 
 		return output
 	}
@@ -200,6 +208,11 @@ const Graph = () => {
 		changeFeatures(featureMap => ({
 			...featureMap,
 		}))
+
+		d3.select(svgRef.current).selectAll("*").remove()
+
+		let breeds = snapshots[0].val()
+		chart(getSimilarityData(breeds))
 	}
 
 	useEffect(() => {
@@ -234,7 +247,6 @@ const Graph = () => {
 						{ 
 							Object.values(featureMap).map((feature) => {
 								featureIndex += 1
-								console.log(feature.text, feature.status)
 								return <FeatureSlider
 									status={ feature.status }
 									text={ feature.text }
