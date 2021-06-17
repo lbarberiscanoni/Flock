@@ -41,15 +41,6 @@ const Evaluation = () => {
 
 	const [user_id, changeUser] = useState(Math.random().toString().split(".")[1])
 
-	//random natural number Math.floor(Math.random() * (max - min + 1)) + min;
-	const [attentionCheckParams, updateAttentionCheck] = useState([
-		Math.floor(Math.random() * (5 - 1 + 1)) + 1,
-		Math.floor(Math.random() * (10 - 5 + 1)) + 5
-	])
-
-	// const [attentionCheckParams, updateAttentionCheck] = useState([1, 2])
-	const [attentionCheckStatus, updateAttentionCheckStatus] = useState(false)
-
 	const handleChange = (e) => {
 		setQuestion({
 			"text": e.target.value,
@@ -64,37 +55,17 @@ const Evaluation = () => {
 		setQuestion({"text": "", "weight": {0:0}, "score": {0:0}})
 	}
 
-	const updateRank = (id, num) => {
-		firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(id).once("value").then((snapshot) => {
-			let current_val = snapshot.val().weight[user_id] ? snapshot.val().weight[user_id] : 0
-			let new_val = current_val + num
-			let updates = {}
-			updates["weight/" + user_id] = new_val
-			firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(id).update(updates)
-		})
-	}
-
 	const updateScores = (score) => {
-		//add the user to the tree branch for attention checks
-		if (featureNum < 1) {
-			let updatesToAttentionChecks = {}
-			updatesToAttentionChecks[user_id + "/score/"] = 0
-			firebase.database().ref("/").child("pair_" + dogPair.toString()).child("attention_checks").update(updatesToAttentionChecks)
-		}
 
-		//check if you are in attentionChecking mode
-		if (!attentionCheckStatus && featureNum == attentionCheckParams[1]) {
-			let updates = {}
-			updates[user_id + "/score/"] = score
-			firebase.database().ref("/").child("pair_" + dogPair.toString()).child("attention_checks").update(updates)
-		} else {
-			let feature_id = Object.keys(snapshots[dogPair].val()["features"]).filter(key => 
-				snapshots[dogPair].val()["features"][key]["text"] == Object.values(snapshots[dogPair].val()["features"])[featureNum]["text"]
-			)[0]
-			let updates = {}
-			updates["score/" + user_id] = score
-			firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").child(feature_id).update(updates)
-		}
+		let updates = {}
+		updates["score/" + user_id] = score
+		firebase.database()
+			.ref("/")
+			.child("breeds")
+			.child(dogPair)
+			.child("features")
+			.child(featureNum)
+			.update(updates)
 	}
 
 	const nextPair = () => {
@@ -107,261 +78,101 @@ const Evaluation = () => {
 	}
 
 	const nextFeature = () => {
-		if (featureNum < Object.values(snapshots[dogPair].val()["features"]).length - 1) {
+		let features = Object.values(snapshots[1].val())
+		if (featureNum < (features.length - 1)) {
 			changeFeature(featureNum + 1)
 		} else {
 			changeFeature(0)
 		}
 	}
 
-	const attentionCheck = () => {
-		firebase.database().ref("/").child("pair_" + dogPair.toString()).child("features").once("value").then((snapshot) => {
-			let prior_answer = Object.values(snapshot.val())[attentionCheckParams[0]]["score"][user_id.toString()]
-			let current_answer = snapshots[dogPair].val()["attention_checks"][user_id.toString()]["score"]
-
-			if (prior_answer == current_answer) {
-				alert("you passed the attention check! \n keep going")
-				updateAttentionCheckStatus(true)
-			} else {
-				alert("you failed the attention check \n you are now going to start over")
-				let updatesToAttentionChecks = {}
-				updatesToAttentionChecks[user_id + "/score/"] = 0
-				firebase.database().ref("/").child("pair_" + dogPair.toString()).child("attention_checks").update(updatesToAttentionChecks)
-				changeFeature(0)
-			}
-		})
-	}
-
-	if(snapshots.length > 0) {
-		let features = Object.values(snapshots[dogPair].val()["features"])
-		if(stage < 1) {
-			if (!attentionCheckStatus && featureNum == attentionCheckParams[1]) {
-				return (
-				  	<div className="container">
-					    <h1>Flock</h1>
-					    <div className="row">
-					     	<div className="col">
-								<Picture
-									dog={ snapshots[dogPair].val()["pictureA"] }
-								/>
-							</div>
-							 <div className="col">
-								<Picture 
-									dog={ snapshots[dogPair].val()["pictureB"] }
-								/>
-							</div>
-						</div>
-					    <div className="row"></div>
-					    <div className="row"></div>
-						<div className="row">
-							<div className="col">
-								<ul className="list-group">
-									<li className="list-group-item"> 	
-										<div className="row">
-											<div className="col-sm-2">
-												<p>Confidence Level</p>
-												<h3>
-													{ snapshots[dogPair].val()["attention_checks"][user_id.toString()]["score"] }
-												</h3>
-											</div>
-											<div className="col-sm-8">
-												<h3>
-													{ Object.values(snapshots[dogPair].val()["features"])[attentionCheckParams[0]]["text"] }
-												</h3>
-												<div className="form-group">
-													<label>Not at all</label>
-													<input 
-														type="range" 
-														className="form-range" 
-														min="0" 
-														max="1" 
-														defaultValue="0.5" 
-														step="0.05" 
-														onChange={(e) => { updateScores(e.target.value) }} 
-													/>
-													<label>Absolutely Yes</label>
-												</div>
-											</div>
-											<div className="col">
-												<button 
-													className="btn btn-primary" 
-													onClick={() => attentionCheck() }
-												>
-													Next Feature
-												</button>
-											</div>
-											<div className="col"></div>
-										</div>
-									</li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-				)
-			} else {
-			  	return (
-				  	<div className="container">
-					    <h1>Flock</h1>
-					    <div className="row">
-					     	<div className="col">
-								<Picture
-									dog={ snapshots[dogPair].val()["pictureA"] }
-								/>
-							</div>
-							 <div className="col">
-								<Picture 
-									dog={ snapshots[dogPair].val()["pictureB"] }
-								/>
-							</div>
-						</div>
-					    <div className="row">
-					    	<h4>As part of our anti-trolling efforts, we added a randomized attention check so be sure to remember your answers or you will have to start over</h4>
-					    </div>
-					    <h5>{"Dog Pair " + (dogPair + 1).toString() + " / " + Object.values(snapshots).length.toString()}</h5>
-					    <ProgressBar 
-					    	animated 
-					    	variant="success" 
-					    	now={(dogPair + 1) / (Object.values(snapshots).length) * 100 } 
-					    	label={Math.round((dogPair + 1) / (Object.values(snapshots).length) * 100) + "%"}
-					    />
-					    <h5>{"Feature " + featureNum.toString() + " / " + features.length.toString()}</h5>
-					    <ProgressBar 
-					    	animated 
-					    	now={(featureNum / features.length) * 100} 
-					    	label={Math.round((featureNum / features.length) * 100) + "%"} 
-					    />
-					    <div className="row"></div>
-						<div className="row">
-							<div className="col">
-								<ul className="list-group">
-									<li className="list-group-item"> 	
-										<div className="row">
-											<div className="col-sm-2">
-												<p>Confidence Level</p>
-												<h3>
-													{ features[featureNum]["score"][user_id.toString()] }
-												</h3>
-											</div>
-											<div className="col-sm-8">
-												<h3>
-													{ features[featureNum]["text"] }
-												</h3>
-												<div className="form-group">
-													<label>Not at all</label>
-													<input 
-														type="range" 
-														className="form-range" 
-														min="0" 
-														max="1" 
-														defaultValue="0.5" 
-														step="0.05" 
-														onChange={(e) => { updateScores(e.target.value) }} 
-													/>
-													<label>Absolutely Yes</label>
-												</div>
-											</div>
-											<div className="col">
-												<button 
-													className="btn btn-primary" 
-													hidden={ Object.keys(features[featureNum]["score"]).indexOf(user_id.toString()) < 0 || featureNum >= Object.values(snapshots[dogPair].val()["features"]).length - 1}
-													onClick={() => nextFeature() }
-												>
-													Next Feature
-												</button>
-												<button 
-													className="btn btn-primary" 
-													hidden={featureNum < features.length - 1}
-													onClick={() => nextPair() }
-												>
-													Next Stage
-												</button>
-											</div>
-											<div className="col"></div>
-										</div>
-									</li>
-								</ul>	
-							</div>
-						</div>
-					</div>
-				)
-			}
-		} else {
-			return (
-			  	<div className="container">
-				    <h1>Flock</h1>
-				    <div className="row">
-				     	<div className="col">
-							<Picture
-								dog={ snapshots[dogPair].val()["pictureA"] }
-							/>
-						</div>
-						 <div className="col">
-							<Picture 
-								dog={ snapshots[dogPair].val()["pictureB"] }
-							/>
-						</div>
-					</div>
-				    <div className="row">
-						<button 
-							className="btn btn-primary" 
-							hidden={ dogPair > snapshots.length - 1  } 
-							onClick={() => nextPair() }
-						>
-							Next Pair
-						</button>
-						<a href="/tasks/conclusion">
-							<button 
-								className="btn btn-primary"
-								hidden={ dogPair <= snapshots.length - 1 } 
-							>
-								Done
-							</button>
-						</a>
-				    </div>
-				    <div className="row">
-				    	<h4>Rank these features in terms of importance in distinguishing the difference by upvoting and downvoting them</h4>
-				    </div>
-				    <div className="row"></div>
-					<div className="row">
-						<div className="col">
-							<ul className="list-group">
-								{
-									//sorting by weight (upvotes/downvotes)
-									features.sort((a, b) => {
-			  							return b.weight[user_id] - a.weight[user_id]
-			  						}).map((feature) => {
-			  							let feature_key = Object.keys(snapshots[dogPair].val()["features"]).filter(key => snapshots[dogPair].val()["features"][key]["text"] == feature["text"])[0]
-										return <li className="list-group-item"> 	
-											<div className="row">
-												<div className="col-sm-2">
-													<p>Importance</p>
-													<h3>{ feature.weight[user_id] ? feature.weight[user_id] : 0}</h3>
-												</div>
-												<div className="col-sm-8">
-													<h3>
-														{ feature["text"] }
-													</h3>
-													<div className="row">
-														<button onClick={() => { updateRank(feature_key, 1); }}>
-															<ArrowUpCircle width="35" height="35"/>
-														</button>
-														<button onClick={() => { updateRank(feature_key, -1) }}>
-															<ArrowDownCircle width="35" height="35"/>
-														</button>
-													</div>
-												</div>
-												<div className="col"></div>
-												<div className="col"></div>
-											</div>
-										</li>
-									})
-								}
-							</ul>	
-						</div>
+	if(snapshots.length > 1) {
+		let features = Object.values(snapshots[1].val())
+		let dogs = Object.values(snapshots[0].val())
+	  	return (
+		  	<div className="container">
+			    <h1>Flock</h1>
+			    <div className="row">
+			     	<div className="col">
+						<Picture
+							dog={ dogs[dogPair]["picture"] }
+						/>
 					</div>
 				</div>
-			)
-		}
+			    <h5>{"Dog Pair " + (dogPair + 1).toString() + " / " + dogs.length.toString()}</h5>
+			    <ProgressBar 
+			    	animated 
+			    	variant="success" 
+			    	now={(dogPair + 1) / (dogs.length) * 100 } 
+			    	label={Math.round((dogPair + 1) / (dogs.length) * 100) + "%"}
+			    />
+			    <h5>{"Feature " + featureNum.toString() + " / " + features.length.toString()}</h5>
+			    <ProgressBar 
+			    	animated 
+			    	now={(featureNum / features.length) * 100} 
+			    	label={Math.round((featureNum / features.length) * 100) + "%"} 
+			    />
+			    <div className="row"></div>
+			    <div className="row">
+					<div className="col">
+						<ul className="list-group">
+							<li className="list-group-item"> 	
+								<div className="row">
+									<div className="col-sm-2">
+										<p>Confidence Level</p>
+										<h3>
+											{ dogs[dogPair]["features"][featureNum]["score"][user_id.toString()] }
+										</h3>
+									</div>
+									<div className="col-sm-8">
+										<h3>
+											{ features[featureNum]["text"] }
+										</h3>
+										<div className="form-group">
+											<label>Not at all</label>
+											<input 
+												type="range" 
+												className="form-range" 
+												min="0" 
+												max="1" 
+												defaultValue="0.5" 
+												step="0.05" 
+												onChange={(e) => { updateScores(e.target.value) }} 
+											/>
+											<label>Absolutely Yes</label>
+										</div>
+									</div>
+									<div className="col">
+										<button 
+											className="btn btn-primary" 
+											hidden={ Object.keys(dogs[dogPair]["features"][featureNum]["score"]).indexOf(user_id.toString()) < 0 || featureNum >= (features.length - 1) }
+											onClick={() => nextFeature() }
+										>
+											Next Feature
+										</button>
+										<button 
+											className="btn btn-primary" 
+											hidden={featureNum < features.length - 1}
+											onClick={() => nextPair() }
+										>
+											Next Stage
+										</button>
+										<a 
+											hidden={ stage < 1}
+											href="/tasks/conclusion"
+										>
+											<button className="btn btn-primary">
+												Done
+											</button>
+										</a>
+									</div>
+								</div>
+							</li>
+						</ul>	
+					</div>
+				</div>
+			</div>
+		)
 	} else {
 		return(
 			<div className="spinner-border" role="status">

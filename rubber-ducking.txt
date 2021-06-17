@@ -440,6 +440,69 @@ ok let's go
 	the Sopranos is such a good show for this
 	let's manipulate feature inclusion
 
+ok let's do this attention check
+	nevermind, let's fix this bug
+		jk I was looking at the wrong page ahah
+	I'm def going to have to restructure the schema a little bit
+		already I was thinking of saving the participant id in the score update so I can remove them more easily
+	I should keep track of the pairwise comparision matrix in a separate branch
+	I also need do a bootstrap task
+	yea, I should pivot away from doing the attention check today
+
+	should I develop a tiny server, maybe using Flask, and deploy on Heroku to track the pairwise matrix
+		according to this I'd still have to unwrap it into pairs (https://stackoverflow.com/questions/56970259/how-to-model-a-matrix-table-in-django)
+
+	the pairwise comparision matrix is the first step
+		it'd be super easy to add the PCA results 
+		0 {
+			1 {
+				wins: {
+					userA: 300
+				}
+				losses: {
+					userB: 200
+					userC: 120
+				}
+				pca: 14.5
+			}
+		}
+		I really don't want to duplicate this data though
+
+	for the bootstrap task, I just have to modify the evaluation page
+		yea, and just have 1 user put in the initial value unless they fail the check 
+
+	let's fully flesh out the pair selection algo 
+		First, Ima use the boostrap values to generate some level of transitivity
+			it needs it's own branch in the DB
+		I need check on the PCA and prioritize pairs where the distance is low
+		the key is to figure out the relationship between the PCA distance, the distance from boostrapping, and the elo update
+			yea, bc on some level I'm trying to falsify a large phenotype-genomic ratio
+		wouldn't it make sense to take the winner and make it compete against the next best in line until it drops? 
+			but I need to keep track of dominated pairs, especially for upsets 
+		should I loop through all the features for each pair? 
+		the algo runs client-side by breaking down the matrix
+		they key to PAPRIKA is that as long as the hierachy makes sense recursively, then I can trust the overall ranking
+			which simplifies the problem away from having to do all pairwise comparisions
+			yea so instead of random I should keep the winner and iterate until it loses
+			do I stop once I reach a duplicate?
+			
+
+	just had a realization about the attention check: if there is a duplicate, just check if the answers have been the same
+
+time to finally do this horse scraper
+	first, let's get the links
+		https://www.horsebreedspictures.com/gypsy-horse.asp
+			it's nice that it automatically redirects to the right horse
+		http://www.theequinest.com/breeds/arenberg-nordkirchener/
+		http://www.fao.org/dad-is/browse-by-country-and-species/en/
+	next, let's get teh list of horse breeds
+	ok let's draft out a plan for this
+		read the file to make a list of breeds
+		enter them on each website
+			each website should have its own scraping function
+				thus I feed the breed name as the argument
+		I need to put into a matrix
+
 TO-DO sidenote
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background

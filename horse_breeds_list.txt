@@ -1,0 +1,37 @@
+AKTK    Akhal Teke
+AND  Andalusian
+ARR  Arabian
+BEL  Belgian
+CSP  Caspian
+EXMR    Exmoor
+FIN  Finnhorse
+FM  Franches-Montagnes
+FT  French Trotter
+HAN  Hanoverian
+ICE  Icelandic
+LUST    Lusitano
+MNGP    Mangalarga Paulista
+MARM    Maremmano
+MINI    Miniature
+MON  Mongolian
+NFST    New Forest Pony
+NORF    Norwegian Fjord
+PT  Paint
+PERC    Percheron
+PRPF    Puerto Rican Paso Fino
+QH  Quarter Horse
+SHET    Shetland
+SHR  Shire
+STBDNor Standardbred (Norway)
+SZWB    Swiss Warmblood
+TB_UK   Thoroughbred (UK/Ire)
+TB_US   Thoroughbred (US)
+CLYD    Clydesdale
+FELL    Fell Pony
+MOR  Morgan
+SB  Saddlebred
+STBDUS  Standardbred (US)
+PERU    Peruvian Paso
+TUVA    Tuva
+NSWE    North Swedish Horse
+FLCR    Florida Cracker
