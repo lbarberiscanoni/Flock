@@ -503,6 +503,11 @@ time to finally do this horse scraper
 				thus I feed the breed name as the argument
 		I need to put into a matrix
 
+first let's do the bootstrap 
+	I need to resurrect the old version and make push everything to the Firebase
+	let's adapt it to the new thing
+	now let's redraw the default graph to just include height and weight
+
 TO-DO sidenote
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background

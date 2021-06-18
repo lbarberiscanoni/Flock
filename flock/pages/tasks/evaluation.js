@@ -31,9 +31,7 @@ if (!firebase.apps.length) {
 
 const Evaluation = () => {
   
-	const [question, setQuestion] = useState({})
 	const [dogPair, newPair] = useState(0)
-	const [stage, switchStage] = useState(0)
 	const [featureNum, changeFeature] = useState(0)
 
 
@@ -41,18 +39,9 @@ const Evaluation = () => {
 
 	const [user_id, changeUser] = useState(Math.random().toString().split(".")[1])
 
-	const handleChange = (e) => {
-		setQuestion({
-			"text": e.target.value,
-			"score": {0:0},
-			"weight": {0:0}
-		})
-	}
-
 	const changePics = () => {
 		newPair(dogPair + 1)
 		changeFeature(0)
-		setQuestion({"text": "", "weight": {0:0}, "score": {0:0}})
 	}
 
 	const updateScores = (score) => {
@@ -69,12 +58,8 @@ const Evaluation = () => {
 	}
 
 	const nextPair = () => {
-		if (stage < 1) {
-			switchStage(1)
-		} else if (stage == 1) {
-			switchStage(0)
-			changePics()
-		}
+		changeFeature(0)
+		changePics()
 	}
 
 	const nextFeature = () => {
@@ -129,7 +114,16 @@ const Evaluation = () => {
 											{ features[featureNum]["text"] }
 										</h3>
 										<div className="form-group">
-											<label>Not at all</label>
+											<label
+												className="float-left"
+											>
+												Not at all
+											</label>
+											<label
+												className="float-right"
+											>
+												Absolutely Yes
+											</label>
 											<input 
 												type="range" 
 												className="form-range" 
@@ -139,7 +133,7 @@ const Evaluation = () => {
 												step="0.05" 
 												onChange={(e) => { updateScores(e.target.value) }} 
 											/>
-											<label>Absolutely Yes</label>
+											
 										</div>
 									</div>
 									<div className="col">
@@ -152,13 +146,13 @@ const Evaluation = () => {
 										</button>
 										<button 
 											className="btn btn-primary" 
-											hidden={featureNum < features.length - 1}
+											hidden={ featureNum < (features.length - 1) }
 											onClick={() => nextPair() }
 										>
-											Next Stage
+											Next Dog
 										</button>
 										<a 
-											hidden={ stage < 1}
+											hidden={ dogPair < dogs.length - 1 }
 											href="/tasks/conclusion"
 										>
 											<button className="btn btn-primary">

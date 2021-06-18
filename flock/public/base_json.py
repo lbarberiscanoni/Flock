@@ -56,29 +56,30 @@ def breed_centric_model():
 	images = [x.split(".jpg")[0] for x in listdir("./dogs/") if ".jpg" in x]
 	base_json = {}
 
-	features = ["who has the longer nose?",
-	"who has the darker eyes?",
-	"who has the most promiment chest?",
-	"who is most furry?",
-	"who is taller?",
-	"who has the bigger paws?",
-	"who is heavier weight-wise?",
-	"who has the darker ears?",
-	"who has the thicker tail?",
-	"who has the largest width between their legs?",
-	"who has the most spots in their ears?",
-	"who has the darker coat?",
-	"who looks most similar to a horse?",
-	"who has the highest front legs?",
-	"who has the stronger posture?",
-	"who has the widest stance?",
-	"who is more pale?",
-	"who has the more aggressive (ready to bite) look?",
-	"who has the longest stomatch hair?",
-	"who has the most consistency in their skin-color?",
-	"who has more spots near their eyes?",
-	"who has the thicker neck?"
-	]
+	features = ["how heavy is it?", "how tall is it?"]
+	# features = ["who has the longer nose?",
+	# "who has the darker eyes?",
+	# "who has the most promiment chest?",
+	# "who is most furry?",
+	# "who is taller?",
+	# "who has the bigger paws?",
+	# "who is heavier weight-wise?",
+	# "who has the darker ears?",
+	# "who has the thicker tail?",
+	# "who has the largest width between their legs?",
+	# "who has the most spots in their ears?",
+	# "who has the darker coat?",
+	# "who looks most similar to a horse?",
+	# "who has the highest front legs?",
+	# "who has the stronger posture?",
+	# "who has the widest stance?",
+	# "who is more pale?",
+	# "who has the more aggressive (ready to bite) look?",
+	# "who has the longest stomatch hair?",
+	# "who has the most consistency in their skin-color?",
+	# "who has more spots near their eyes?",
+	# "who has the thicker neck?"
+	# ]
 
 	base_json["features"] = {}
 
