@@ -97,7 +97,7 @@ def breed_centric_model():
 		base_json["breeds"][i]["features"] = {}
 
 		for n in range(len(features)):
-			base_json["breeds"][i]["features"][n] = {"weight": 0, "score": 1500}
+			base_json["breeds"][i]["features"][n] = {"weight": 0, "score": 1500, "bootstrap": 0}
 
 		i += 1
 

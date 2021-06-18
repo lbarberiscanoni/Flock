@@ -47,7 +47,7 @@ const Evaluation = () => {
 	const updateScores = (score) => {
 
 		let updates = {}
-		updates["score/" + user_id] = score
+		updates["bootstrap/" + user_id] = score
 		firebase.database()
 			.ref("/")
 			.child("breeds")
@@ -106,7 +106,7 @@ const Evaluation = () => {
 									<div className="col-sm-2">
 										<p>Confidence Level</p>
 										<h3>
-											{ dogs[dogPair]["features"][featureNum]["score"][user_id.toString()] }
+											{ dogs[dogPair]["features"][featureNum]["bootstrap"][user_id.toString()] }
 										</h3>
 									</div>
 									<div className="col-sm-8">
@@ -139,7 +139,7 @@ const Evaluation = () => {
 									<div className="col">
 										<button 
 											className="btn btn-primary" 
-											hidden={ Object.keys(dogs[dogPair]["features"][featureNum]["score"]).indexOf(user_id.toString()) < 0 || featureNum >= (features.length - 1) }
+											hidden={ Object.keys(dogs[dogPair]["features"][featureNum]["bootstrap"]).indexOf(user_id.toString()) < 0 || featureNum >= (features.length - 1) }
 											onClick={() => nextFeature() }
 										>
 											Next Feature
