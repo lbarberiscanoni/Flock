@@ -2,8 +2,8 @@ from selenium import webdriver
 from pprint import pprint
 import json
 
-# letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "X", "Y", "Z"]
-letters = ["A"]
+letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "X", "Y", "Z"]
+# letters = ["A"]
 
 dogs = {}
 
@@ -29,7 +29,10 @@ for letter in letters:
 			dog["name"] = dog_name
 			for info in breed_info:
 				feature = info.text.split(":")[0]
-				dog[feature] = info.text.split(":")[1]
+				if len(info.text.split(":")) > 2:
+					dog[feature] = " ".join(info.text.split(":")[1:len(info.text.split(":")) -1])
+				else:
+					dog[feature] = info.text.split(":")[1]
 
 			dogs[dog_name] = dog
 		except Exception as e:

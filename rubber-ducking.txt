@@ -508,6 +508,50 @@ first let's do the bootstrap
 	let's adapt it to the new thing
 	now let's redraw the default graph to just include height and weight
 
+ok let's do this ground truth ranking comparision 
+	first I need to get height and weight data 
+		jeez, I can't believe it took 3 pomodoros to do this lol
+	next I need to download and cleanup the flock data
+		this was easier than I expected
+	then I need to compute the Average Reciprocal Hit Ranking
+		this library is perfect http://ocelma.net/software/python-recsys/build/html/evaluation.html
+			doesn't work with python3 lol
+		let's compute it ourselves (https://en.wikipedia.org/wiki/Mean_reciprocal_rank)
+	seems like the Spearman is the better option 
+
+ok let's update the pair selection algo 
+	first we are going to have a winner take down system 
+		this was easier than expected
+			shooutut to maintanble code 
+	second the attention check 
+		first, I have to track all of the new score updates so I can remove them
+		next I need to track the history 
+		I then need to periodically pick a random comparision so I can run it again 
+			see, but then what happens if someone has already run a comparision...
+				I can can run a complex backtrack
+					which wouldn't work bc I can't do it simultaneously to all of them
+		I need to just track wins and losses 
+			this is good for the rest of the system I guess
+			userID {
+				win/loss: -1 or 1
+				opponent: opponentID
+			}
+			the thing is, I need to know when these happened
+			should I be tracking it per user? 
+				that would easily track the history 
+				yea, that would make it super easy to remove the prior answers 
+			no, I need to track it as a global history otherwise I lose the sequence 
+				userID {
+					winner: dogC
+					loser: dogD
+				}
+				userID {
+					winner: dogA
+					loser: dogB
+				}
+				OMG and this is super easy to then do the attention check 
+			I can do both
+
 TO-DO sidenote
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background
