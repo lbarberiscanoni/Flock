@@ -23,22 +23,6 @@ if (!firebase.apps.length) {
 
 const Conclusion = () => {
 
-	const [snapshots, loading, error] = useList(firebase.database().ref('/'));
-
-	const handleChange = (e) => {
-		setSuggestion({
-			"text": e.target.value,
-		})
-	}
-
-	const handleSubmit = (e) => {
-		e.preventDefault()
-		firebase.database().ref("/").child("suggestions").push(suggestion)
-		addSuggestions(state => [suggestion, ...state])
-		setSuggestion({"text": ""})
-
-	}
-
 	return (
 		<div className="container">
 			<h1 className="text-center">You are done!</h1>

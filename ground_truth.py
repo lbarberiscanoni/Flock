@@ -39,7 +39,7 @@ with open("ground_truth.json", "r+") as outfile:
 
 	ob = {}
 	for el in ground_truth_data:
-		bootstrap_vals = [float(x) for x in el["features"][1]["bootstrap"].values()]
+		bootstrap_vals = [float(x) for x in el["features"][1]["bootstrap"].values()] 
 		ob[el["name"]] = np.median(bootstrap_vals)
 
 	ranked_breeds = dict(sorted(ob.items(), key=lambda x: x[1], reverse=True))
@@ -60,6 +60,8 @@ ground_truth_without_missing_vals_sorted = dict(sorted(ground_truth_without_miss
 heights_without_missing_vals_sorted = dict(sorted(heights_without_missing_vals.items(), key=lambda x: x[1], reverse=True))
 print(ground_truth_without_missing_vals_sorted)
 # print(heights_without_missing_vals_sorted)
+with open("overlapping_breeds.json", "w+") as outfile:
+    json.dump(heights_without_missing_vals_sorted, outfile)
 
 def coefficients(g_truth, estimates):
     print(len(g_truth), len(estimates))

@@ -44,6 +44,8 @@ const Elo = () => {
 
 	const [attentionCheckStatus, updateAttentionCheck] = useState(false)
 
+	const minLoops = 80
+
 
 	const elo = (playerScore, opponentScore, winStatus) => {
 		//https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details
@@ -180,89 +182,122 @@ const Elo = () => {
 			})
 			changePair(newPair(winner_key, loser_key))
 			updateAttentionCheck(false)
+			changeFeature(0)
+			changeLoop(1)
 		}
 	}
 
 	if(snapshots.length > 1) {
-		let breeds = snapshots[0].val()
-		let features = snapshots[1].val()
-		return(
-			<div className="container">
-				<h1>Flock</h1>
-				<ProgressBar 
-					variant="success"
-			    	animated 
-			    	now={(loop / 10) * 100} 
-			    	label={"breeds " + Math.round((loop / 10) * 100) + "%"} 
-			    />
-			    <ProgressBar 
-			    	animated 
-			    	now={(featureNum / features.length) * 100} 
-			    	label={"features " + Math.round((featureNum / features.length) * 100) + "%"} 
-			    />
-				<div className="row">
-					<h2 
-						className="text-center"
-					>
-						{ features[featureNum].text }
-					</h2>
-					<a href="/tasks/conclusion">
-						<button
-							className="btn btn-primary"
-							hidden={ featureNum < features.length }
+		if (loop < minLoops) {
+			let breeds = snapshots[0].val()
+			let features = snapshots[1].val()
+			return(
+				<div className="container">
+					<h1>Flock</h1>
+					<h4>You have get to the end to get the confirmation code that gets you paid!</h4>
+					<h4>We implemented an anti-troll attention check so you need to remember your answers or you'll have to start over each time!</h4>
+					<ProgressBar 
+						variant="success"
+				    	animated 
+				    	now={(loop / minLoops) * 100} 
+				    	label={"breeds " + Math.round((loop / minLoops) * 100) + "%"} 
+				    />
+				    <ProgressBar 
+				    	animated 
+				    	now={(featureNum / features.length) * 100} 
+				    	label={"features " + Math.round((featureNum / features.length) * 100) + "%"} 
+				    />
+					<div className="row">
+						<h2 
+							className="text-center"
 						>
-							Done
-						</button>
-					</a>
-				</div>
-			    <div className="row">
-			     	<div className="col">
-						<Picture
-							dog={ breeds[itemPair[0]]["picture"] }
-							name={ "" }
-						/>
-						{
-							attentionCheckStatus ? 
-								<button
-									className="btn btn-primary"
-									onClick={() => attentionCheck(0)}
-								>
-									Winner
-								</button>
-							: <button
-									className="btn btn-primary"
-									onClick={() => updateMatchup(0)}
-								>
-									Winner
-								</button>
-						}
+							{ features[featureNum].text }
+						</h2>
+						<a href="/tasks/conclusion">
+							<button
+								className="btn btn-primary"
+								hidden={ featureNum < features.length }
+							>
+								Done
+							</button>
+						</a>
 					</div>
-					 <div className="col">
-						<Picture 
-							dog={ breeds[itemPair[1]]["picture"] }
-							name={ "" }
-						/>
-						{
-							attentionCheckStatus ? 
-								<button
-									className="btn btn-primary"
-									onClick={() => attentionCheck(1)}
-								>
-									Winner
-								</button>
-							: <button
-									className="btn btn-primary"
-									onClick={() => updateMatchup(1)}
-								>
-									Winner
-								</button>
-						}
+				    <div className="row">
+				     	<div className="col">
+							<Picture
+								dog={ breeds[itemPair[0]]["picture"] }
+								name={ "" }
+							/>
+							{
+								attentionCheckStatus ? 
+									<button
+										className="btn btn-primary"
+										onClick={() => attentionCheck(0)}
+									>
+										Winner
+									</button>
+								: <button
+										className="btn btn-primary"
+										onClick={() => updateMatchup(0)}
+									>
+										Winner
+									</button>
+							}
+						</div>
+						 <div className="col">
+							<Picture 
+								dog={ breeds[itemPair[1]]["picture"] }
+								name={ "" }
+							/>
+							{
+								attentionCheckStatus ? 
+									<button
+										className="btn btn-primary"
+										onClick={() => attentionCheck(1)}
+									>
+										Winner
+									</button>
+								: <button
+										className="btn btn-primary"
+										onClick={() => updateMatchup(1)}
+									>
+										Winner
+									</button>
+							}
+						</div>
+					</div>
+					<div className="row"></div>
+					<div className="row"></div>
+				</div>
+			)
+		} else {
+			return(
+				<div className="container">
+					<div className="row">
+						<h1 className="text-center">You are done!</h1>
+						<h1 className="text-center">Thank you for participating</h1>
+					</div>
+					<br />
+					<br />
+					<div className="row">
+						<h2>Enter this confirmation code to get paid: { user_id }</h2>
+					</div>
+					<br />
+					<br />
+					<div className="row">
+						<h3>BY THE WAY: We are recruiting for a similar experiment to what you just did but where we pay 2-3 times what we paid you here in order to have multiple people work on this simultaneously </h3>
+						<h3>
+							If you are interested,  
+							<a href="mailto:hllbck7@gmail.com">
+								email us 
+							</a>
+							and we will send you a scheduling form so you can sign up. Please don't spam us lol
+						</h3>
+						<h3>If you are not interested then that's ok too XD</h3>
 					</div>
 				</div>
-				<div className="row"></div>
-				<div className="row"></div>
-			</div>
-		)
+			)
+		}
 	} else {
 		return(
 			<div className="spinner-border" role="status">

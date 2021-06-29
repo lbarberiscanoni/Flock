@@ -552,6 +552,16 @@ ok let's update the pair selection algo
 				OMG and this is super easy to then do the attention check 
 			I can do both
 
+let's re-run this now
+	the progress bar is not resetting
+		fixed
+	ok now I added the end
+		let's restructure this system so that the reward only happens at the end
+	now let's limit to the 50 dogs 
+		first, I need to generate a file with the overlapping names
+		I guess it's 100 lol
+	good to add the message about the troll-check
+
 TO-DO sidenote
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background

@@ -103,6 +103,37 @@ def breed_centric_model():
 
 	return base_json
 
+def just_overlapping_breeds():
+	with open("overlapping_breeds.json", "r+") as outfile:
+		overlapping_breeds = json.load(outfile).keys()
+		print(overlapping_breeds)
+
+	base_json = {}
+
+	features = ["which one is heavier?", "which one is taller?"]
+
+	base_json["features"] = {}
+
+	i = 0
+	for feature in features:
+		base_json["features"][i] = {"text": feature}
+		i += 1
+
+	base_json["breeds"] = {}
+	i = 0
+	for dogName in overlapping_breeds:
+		base_json["breeds"][i] = {}
+		base_json["breeds"][i]["name"] = dogName
+		base_json["breeds"][i]["picture"] = dogName.replace(" ", "_") + ".jpg"
+		base_json["breeds"][i]["features"] = {}
+
+		for n in range(len(features)):
+			base_json["breeds"][i]["features"][n] = {"weight": 0, "score": 1500, "bootstrap": 0}
+
+		i += 1
+
+	return base_json
+
 with open("sample.json", "w+") as outfile:
-	data = breed_centric_model()
+	data = just_overlapping_breeds()
 	json.dump(data, outfile)
