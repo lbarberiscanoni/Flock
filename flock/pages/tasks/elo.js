@@ -124,6 +124,7 @@ const Elo = () => {
 		history["user"] = user_id
 		history["winner"] = winner_key
 		history["loser"] = loser_key
+		history["feature"] = featureNum
 		firebase.database()
 			.ref('/history')
 			.push(history)
@@ -142,7 +143,9 @@ const Elo = () => {
 				let prior_attempt_to_check = prior_attempts[prior_attempts.length * Math.random() | 0]
 				updateAttentionCheck(prior_attempt_to_check)
 				let switched_pair = [snapshots[2].val()[prior_attempt_to_check]["loser"], snapshots[2].val()[prior_attempt_to_check]["winner"]]
+				let prior_feature = snapshots[2].val()[prior_attempt_to_check]["feature"]
 				changePair(switched_pair)
+				changeFeature(prior_feature)
 			} else {
 				changePair(newPair(winner_key, loser_key))
 			}
