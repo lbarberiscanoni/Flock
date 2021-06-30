@@ -67,35 +67,37 @@ const Ranking = () => {
 			}
 		})
 
-		console.log(dogs)
-
 		return dogs
 	}
 
-	if (snapshots.length > 2) {
+	if (snapshots.length > 3) {
 		let dogs = Object.values(snapshots[0].val())
+		let history = eloRankings(snapshots)
+		let gt_truth = snapshots[3].val()
+
 		let elo_index = 0
 		let history_index = 0
-		let history = eloRankings(snapshots)
+		let gt_index = 0
+		console.log(gt_truth)
 		return(
 			<div className="container">
 				<h1>Rankings</h1>
 				<div className="row">
 					<div className="col">
-						<h5>Latest Elo</h5>
+						<h5>Ground Truth</h5>
 						<ul>
 							{
-								dogs.sort((a, b) => {
-									return Object.values(b["features"][1]["score"])[Object.values(b["features"][1]["score"]).length - 1] - Object.values(a["features"][1]["score"])[Object.values(a["features"][1]["score"]).length - 1]
+								Object.keys(gt_truth).sort((a, b) => {
+									return gt_truth[b] - gt_truth[a]
 								}).map((dog) => {
-									elo_index += 1
+									gt_index += 1
 									return <div className="row">
 										<li>
 											<Picture
-												dog={ dog["picture"] }
+												dog={ dog.replace(" ", "_") + ".jpg" }
 												name={ "" }
 											/>
-											<p># { elo_index } { dog["name"] } </p>
+											<p># { gt_index } { dog } </p>
 										</li>
 									</div>
 								})
@@ -116,7 +118,28 @@ const Ranking = () => {
 												dog={ dog["pic"] }
 												name={ "" }
 											/>
-											<p># { history_index } { dog["pic"] } </p>
+											<p># { history_index } { dog["pic"].replace(".jpg", "") } </p>
+										</li>
+									</div>
+								})
+							}
+						</ul>
+					</div>
+					<div className="col">
+						<h5>Latest Elo</h5>
+						<ul>
+							{
+								dogs.sort((a, b) => {
+									return Object.values(b["features"][1]["score"])[Object.values(b["features"][1]["score"]).length - 1] - Object.values(a["features"][1]["score"])[Object.values(a["features"][1]["score"]).length - 1]
+								}).map((dog) => {
+									elo_index += 1
+									return <div className="row">
+										<li>
+											<Picture
+												dog={ dog["picture"] }
+												name={ "" }
+											/>
+											<p># { elo_index } { dog["name"] } </p>
 										</li>
 									</div>
 								})

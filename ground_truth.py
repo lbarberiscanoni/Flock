@@ -56,6 +56,8 @@ for breed in ground_truth.keys():
         ground_truth_without_missing_vals[breed] = ground_truth[breed]
         heights_without_missing_vals[breed] = heights[breed]
 
+with open("gt_truth_from_temperement.json", "w+") as outfile:
+    json.dump(ground_truth_without_missing_vals, outfile)
 
 ground_truth_without_missing_vals_sorted = dict(sorted(ground_truth_without_missing_vals.items(), key=lambda x: x[1], reverse=True))
 # heights_without_missing_vals_sorted = dict(sorted(heights_without_missing_vals.items(), key=lambda x: x[1], reverse=True))
