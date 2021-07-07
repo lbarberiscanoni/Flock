@@ -128,9 +128,11 @@ def just_overlapping_breeds():
 		base_json["breeds"][i]["features"] = {}
 
 		for n in range(len(features)):
-			base_json["breeds"][i]["features"][n] = {"weight": 0, "score": 1500, "bootstrap": 0}
+			base_json["breeds"][i]["features"][n] = {"weight": 0, "score": {0: 1500}, "bootstrap": 0}
 
 		i += 1
+
+	base_json["history"] = {0: {"feature": -1, "loser": -1, "user": -1, "winner": -1}}
 
 	return base_json
 

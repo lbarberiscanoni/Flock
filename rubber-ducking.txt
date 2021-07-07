@@ -573,7 +573,29 @@ now let's look at how the new system fairs
 		interesting that it matches the last elo value + weight ahah 
 	now let's just build a quick js spage to display the rankings
 
+today I'm making the marginal accuracy curve for the participants
+	n of turkers vs coefficients
+		I can do all 3 in one plot
+	first though I need to edit the pair selection algo
+		I should be looking only at dogs who are ranked higher 
+		but then I need to delete all unvalidated ranks if someone fails the attention check
+			let's start with this
+			ok so it works by just deleting the specific user's contributions 
+		I need to add a base child to the score
+			I have to remember to make the loop go through every feature
+				let's just do it now
+		there is something off about the score update
+			I wonder if this compromised the results lol
+	ok now to the pair selection algo
+		damn it, the key addition is random...
+			I will take care of this after
+		this is getting complicated
+			whatever, I'll do this later
+		yeeee, it works now
+
 TO-DO sidenote
+	support multiple features
+	check the history to avoid re-doing matchups
 	might be good to have a survey at the end
 	let's not forget about the crypto mining in the background
 

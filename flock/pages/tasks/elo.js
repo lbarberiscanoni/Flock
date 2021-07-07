@@ -63,17 +63,56 @@ const Elo = () => {
 	const newPair = (winner, loser) => {
 		let numOfItems = snapshots[0].val().length - 1
 
+		let currentScore_winner = Object.values(snapshots[0].val()[winner]["features"][featureNum]["score"]).pop()
+		console.log(currentScore_winner)
+		let dogs_with_higher_score = Object.keys(snapshots[0].val()).filter(
+					key => Object.values(snapshots[0].val()[key]["features"][featureNum]["score"]).pop() >= currentScore_winner
+				)
+
+		dogs_with_higher_score.splice(dogs_with_higher_score.indexOf(winner), 1)
+
+		let prior_matchups = []
+		for (let i = 0; i < Object.keys(snapshots[2].val()).length; i++) {
+			let matchup = Object.values(snapshots[2].val())[i]
+			if (matchup["feature"] === featureNum) {
+				if (matchup["winner"] === winner) {
+					prior_matchups.push(matchup["loser"])
+				} else if (matchup["loser"] == winner) {
+					prior_matchups.push(matchup["winner"])
+				}
+			}
+		}
+
+		let dogs_with_higher_score_without_prior_matchups = dogs_with_higher_score.filter(
+			dogNum => prior_matchups.indexOf(dogNum) < 0
+			)
+
 		let newOpponent = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
+		let incumbent = winner
 
-		if (newOpponent === winner) {
-			newOpponent = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
+		if (dogs_with_higher_score > 0) {
+			if (dogs_with_higher_score_without_prior_matchups.length > 0) {
+				newOpponent = dogs_with_higher_score_without_prior_matchups[Math.floor(Math.random() * dogs_with_higher_score_without_prior_matchups.length)]
+
+				if (newOpponent === winner) {
+					newOpponent = dogs_with_higher_score_without_prior_matchups[Math.floor(Math.random() * dogs_with_higher_score_without_prior_matchups.length)]
+				}
+
+				if (newOpponent === loser) {
+					newOpponent = dogs_with_higher_score_without_prior_matchups[Math.floor(Math.random() * dogs_with_higher_score_without_prior_matchups.length)]
+				}
+			} else {
+				if (newOpponent === winner) {
+					newOpponent = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
+				}
+
+				if (newOpponent === loser) {
+					newOpponent = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
+				}
+			}
 		}
 
-		if (newOpponent === loser) {
-			newOpponent = Math.floor(Math.random() * (numOfItems - 0 + 1) ) + 0
-		}
-
-		return [winner, newOpponent]
+		return [incumbent, newOpponent]
 	}
 
 	const updateMatchup = (winnerRef) => {
@@ -81,25 +120,25 @@ const Elo = () => {
 		const winner_key = itemPair[winnerRef]
 		const loser_key = itemPair[loserRef]
 
-		const currentScore_winner = 1500
+		let currentScore_winner = 1500
 		try {
-			const currentScore_winner = Object.values(snapshots[0].val()[winner_key]["features"][featureNum]["score"]).pop()
+			currentScore_winner = Object.values(snapshots[0].val()[winner_key]["features"][featureNum]["score"]).pop()
 		} catch(error) {
-			console.log(error)
+			console.log("error", error)
 		}
 
-		const currentScore_loser = 1500
+		let currentScore_loser = 1500
 		try {
-			const currentScore_loser = Object.values(snapshots[0].val()[loser_key]["features"][featureNum]["score"]).pop()
+			currentScore_loser = Object.values(snapshots[0].val()[loser_key]["features"][featureNum]["score"]).pop()
 		} catch(error) {
-			console.log(error)
+			console.log("error", error)
 		}
 
 		const updatedScore_winner = elo(currentScore_winner, currentScore_loser, 1)
 		const updatedScore_loser = elo(currentScore_loser, currentScore_winner, 0)
 
-		// console.log("winner", updatedScore_winner)
-		// console.log("loser", updatedScore_loser)
+		// console.log("winner", currentScore_winner, updatedScore_winner)
+		// console.log("loser", currentScore_loser, updatedScore_loser)
 
 		let update = {}
 		update["score/" + user_id] = updatedScore_winner
@@ -174,6 +213,22 @@ const Elo = () => {
 			updateAttentionCheck(false)
 		} else {
 			alert("you failed the attention check so now you are starting over")
+			for (let i = 0; i < Object.keys(snapshots[1].val()).length; i++) {
+				let prior_scores = Object.keys(snapshots[0].val()).filter(
+					key => Object.keys(snapshots[0].val()[key]["features"][i]["score"]).indexOf(user_id) > -1
+				)
+				prior_scores.map((key) => {
+					firebase.database()
+						.ref('/breeds/')
+						.child(key)
+						.child('features')
+						.child(i)
+						.child("score")
+						.child(user_id)
+						.remove()
+				})
+			}
+			
 			let prior_attempts = Object.keys(snapshots[2].val()).filter(
 					key => snapshots[2].val()[key]["user"] === user_id
 				)
