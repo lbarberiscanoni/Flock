@@ -125,27 +125,7 @@ const Ranking = () => {
 							}
 						</ul>
 					</div>
-					<div className="col">
-						<h5>Latest Elo</h5>
-						<ul>
-							{
-								dogs.sort((a, b) => {
-									return Object.values(b["features"][1]["score"])[Object.values(b["features"][1]["score"]).length - 1] - Object.values(a["features"][1]["score"])[Object.values(a["features"][1]["score"]).length - 1]
-								}).map((dog) => {
-									elo_index += 1
-									return <div className="row">
-										<li>
-											<Picture
-												dog={ dog["picture"] }
-												name={ "" }
-											/>
-											<p># { elo_index } { dog["name"] } </p>
-										</li>
-									</div>
-								})
-							}
-						</ul>
-					</div>
+					
 				</div>
 			</div>
 		)
@@ -159,3 +139,25 @@ const Ranking = () => {
 }
 
 export default Ranking;
+
+// <div className="col">
+// 	<h5>Latest Elo</h5>
+// 	<ul>
+// 		{
+// 			dogs.sort((a, b) => {
+// 				return Object.values(b["features"][1]["score"])[Object.values(b["features"][1]["score"]).length - 1] - Object.values(a["features"][1]["score"])[Object.values(a["features"][1]["score"]).length - 1]
+// 			}).map((dog) => {
+// 				elo_index += 1
+// 				return <div className="row">
+// 					<li>
+// 						<Picture
+// 							dog={ dog["picture"] }
+// 							name={ "" }
+// 						/>
+// 						<p># { elo_index } { dog["name"] } </p>
+// 					</li>
+// 				</div>
+// 			})
+// 		}
+// 	</ul>
+// </div>

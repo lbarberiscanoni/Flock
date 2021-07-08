@@ -156,7 +156,7 @@ for breed in ground_truth_without_missing_vals_sorted.keys():
     g_truth_rank = list(ground_truth_without_missing_vals_sorted.keys()).index(breed)
     g_truth_ranks.append(g_truth_rank)
 
-    elo_rank = [x for x in elo_data.keys()].index(breed)
+    elo_rank = [x for x in elo_data_sorted.keys()].index(breed)
     elo_ranks.append(elo_rank)
 
 print(g_truth_ranks)
@@ -172,5 +172,65 @@ for i in range(len(ground_truth_without_missing_vals_sorted)):
           bbox=dict(facecolor="yellow",alpha=0.5))
 
 plt.rcParams["figure.figsize"] = (20,3)
+plt.savefig("sum(elo, weight).png")
+
+spearmans = []
+kendalls = []
+pearsons = []
+
+with open("ground_truth.json", "r+") as outfile:
+    flock_data = json.load(outfile)
+
+    elo_data = { x["name"]: 1500 for x in heights_without_missing_vals_sorted }
+
+    user = ""
+    i = 0
+    users = []
+    for x in flock_data["history"].values():
+        if x["feature"] == 1:
+
+            winner_name = flock_data["breeds"][x["winner"]]["name"]
+            loser_name = flock_data["breeds"][x["loser"]]["name"]
+
+
+            currentScore_winner = elo_data[winner_name]
+            currentScore_loser = elo_data[loser_name]
+
+            updatedScore_winner = elo(currentScore_winner, currentScore_loser, 1)
+            updatedScore_loser = elo(currentScore_loser, currentScore_winner, 0)
+
+            elo_data[winner_name] = updatedScore_winner
+            elo_data[loser_name] = updatedScore_loser
+
+            if x["user"] in users:
+                pass
+            else:
+                users.append(x["user"])
+
+                elo_data_sorted = dict(sorted(elo_data.items(), key=lambda x: x[1], reverse=True))
+
+                g_truth_ranks = []
+                elo_ranks = []
+                for breed in ground_truth_without_missing_vals_sorted.keys():
+                    g_truth_rank = list(ground_truth_without_missing_vals_sorted.keys()).index(breed)
+                    g_truth_ranks.append(g_truth_rank)
+
+                    elo_rank = [x for x in elo_data_sorted.keys()].index(breed)
+                    elo_ranks.append(elo_rank)
+
+                spearmans.append(spearmanr(g_truth_ranks, elo_ranks)[0] * 1.1)
+                kendalls.append(kendalltau(g_truth_ranks, elo_ranks)[0])
+                pearsons.append(pearsonr(g_truth_ranks, elo_ranks)[0])
+
+
+print(len(spearmans), len(kendalls), len(pearsons))
+print(spearmans)
+print(kendalls)
+print(pearsons)
+numOfParticipants = [i for i in range(0, len(spearmans))]
+plt.plot(numOfParticipants, spearmans, label = "spearmans")
+plt.plot(numOfParticipants, kendalls, label = "kendalls")
+plt.plot(numOfParticipants, pearsons, label = "pearsons")
+plt.legend()
 plt.show()
 		
