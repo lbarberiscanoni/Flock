@@ -40,7 +40,7 @@ const Elo = () => {
 
 	const [snapshots, loading, error] = useList(firebase.database().ref('/'));
 
-	const [user_id, changeUser] = useState(Math.random().toString().split(".")[1])
+	const [user_id, changeUser] = useState("default")
 
 	const [attentionCheckStatus, updateAttentionCheck] = useState(false)
 
@@ -357,6 +357,14 @@ const Elo = () => {
 			)
 		}
 	} else {
+		if (snapshots.length > 0) {
+			firebase.database()
+				.ref('/users/')
+				.push(Math.random().toString().split(".")[1])
+				.then((snapshot) => {
+					changeUser(snapshot.key)
+				})			
+		}
 		return(
 			<div className="spinner-border" role="status">
 				<span className="sr-only">Loading...</span>
